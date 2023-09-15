@@ -10,7 +10,9 @@ import Shop from "app/containers/shop/Shop";
 import styles from "./styles.scss";
 import HomeLayout from "./HomeLayout";
 import Header from "app/components/header/Header";
-import ProductDetails from 'app/containers/product-details/ProductDetails';
+import ProductDetails from "app/containers/product-details/ProductDetails";
+import Footer from "app/components/footer/Footer";
+import FooterMenu from "app/components/footerMenu/FooterMenu";
 
 const MainLayout: FC<object> = () => {
   return (
@@ -25,6 +27,9 @@ const MainLayout: FC<object> = () => {
           <Route path="/product-details" element={<ProductDetails />} />
         </Routes>
       </Router>
+      <Footer>
+        <FooterMenu />
+      </Footer>
     </div>
   );
 };
