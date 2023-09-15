@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.scss";
 import Header from "app/components/header/Header";
 import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
+import ArticleCard from "app/components/article-card/ArticleCard";
 import { products } from "../shop/data";
 import ProductCard from "app/components/product-card/ProductCard";
+import { Carousel } from "react-responsive-carousel";
 
 const Home = () => {
   return (
@@ -180,6 +182,32 @@ const Home = () => {
         </div>
 
         <OfferCarousal />
+        <div
+          className={styles.category}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginTop: 28,
+            marginBottom: 15,
+          }}
+        >
+          <div className={styles.sectionTitle}>Community Articles</div>
+          <img src="assets/svg/shop/arrow-right.svg" alt="" width={20} />
+        </div>
+
+        <Carousel
+          showThumbs={false}
+          showArrows={false}
+          showStatus={false}
+          centerMode
+          centerSlidePercentage={85}
+        >
+          {products.map((product) => (
+            <div style={{ width: "95%",  }}>
+              <ArticleCard />
+            </div>
+          ))}
+        </Carousel>
 
         <div
           className={styles.category}

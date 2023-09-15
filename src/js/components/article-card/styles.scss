@@ -1,18 +1,19 @@
 .cardWrapper {
-  width: 257px;
-  height: 282px;
   background-color: #ffffff;
   border-radius: 9px;
   border: 1px solid #dbedff;
   background: #fff;
   padding: 14px;
+  text-align: left;
   .imageContainer {
     width: 100%;
     height: fit-content;
+    border-radius: 10px;
+    overflow: hidden;
     .image {
-      width: 228px;
-      height: 137px;
+      height: 160px;
       object-fit: cover;
+      object-position: top;
     }
   }
   .cardDetailsContainer {
