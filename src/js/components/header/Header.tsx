@@ -22,9 +22,7 @@ const Header = (props) => {
   return (
     <div className={styles.headerContainer}>
       {hasMenu && (
-          <div className={styles.headerMenu} >
            <Sidebar/>
-          </div>
       )}
       {hasBack && (
         <div className={styles.headerBack} onClick={() => navigate(-1)}>
