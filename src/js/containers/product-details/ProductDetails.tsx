@@ -3,14 +3,16 @@ import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import styles from './styles.scss';
 import { useNavigate } from 'react-router-dom';
+import Header from 'app/components/header/Header';
 
 const ProductDetails = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className={styles.header}>
-        Header
-      </div>
+      <Header
+        hasBack
+        hasCart
+      />
       <div className={styles.productDetailsWrapper}>
         <div className={styles.productViewer}>
           <Carousel
