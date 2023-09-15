@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardMedia } from '@mui/material';
 
 import BasicRating from 'app/components/BasicRating/BasicRating';
-import PriceView from '../PriceView/PriceView';
+import PriceView from 'app/components/PriceView/PriceView';
 
 interface ProductCardType {
   product: any;
@@ -18,7 +18,7 @@ const ProductCard: FC<ProductCardType> = (props) => {
   const navigate = useNavigate();
   return (
     <Card
-      sx={{ width: '100%', paddingBottom: '0px', boxShadow: 'none' }}
+      sx={{ width: '100%', paddingBottom: '0px', boxShadow: 'none'}}
       onClick={() => navigate('/product-details')}
     >
       <CardActionArea sx={{ height: '100%' }}>
@@ -27,24 +27,40 @@ const ProductCard: FC<ProductCardType> = (props) => {
         >
           <CardMedia
             component="img"
-            height="100%"
-            image="https://www.wehydroponics.com/store/wp-content/uploads/2021/01/151.jpg"
+            height="100px"
+            width="100px"
+            image="assets/svg/products/tashiPro.svg"
             alt="Paella dish"
-            sx={{ width: '20%', borderRadius: '8px', objectFit: 'cover' }}
+            sx={{ maxWidth: '100px',maxHeight:"100px", borderRadius: '8px' }}
+
           />
 
           <Box
             sx={{
               display: 'flex',
-              flexDirection: 'column'
+              flexDirection: 'column',
+              rowGap:"6px"
             }}
           >
+            <Box  sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              rowGap:'4px'
+
+            }}>
             <Typography sx={{ fontSize: 12 }} color="#1D1D1D66">
               {product?.manufacture}
             </Typography>
             <Typography sx={{ fontSize: 16 }} color="#1D1D1D">
               {product?.name}
             </Typography>
+            </Box>
+            <Box  sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              rowGap:'4px'
+
+            }}>
             <BasicRating
               starCount={product?.starRating}
               totalReviewCount={product?.totalReviews}
@@ -53,6 +69,7 @@ const ProductCard: FC<ProductCardType> = (props) => {
               actualPrice={product?.actualPrice}
               currentPrice={product?.currentPrice}
             />
+          </Box>
           </Box>
         </CardContent>
       </CardActionArea>
