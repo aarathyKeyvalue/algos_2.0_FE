@@ -1,0 +1,23 @@
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  .avatarNameContainer {
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-family: Rubik;
+    margin-left: 12px;
+    justify-content: center;
+    .avatarName {
+      color: #1D1D1D;
+      font-size: 14px;
+    }
+    .avatarDesc {
+      margin-top: 2px;
+      color: rgba(29, 29, 29, 0.70);
+      font-size: 11px;
+    }
+  }
+}
