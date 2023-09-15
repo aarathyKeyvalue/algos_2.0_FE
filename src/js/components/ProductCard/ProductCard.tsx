@@ -94,35 +94,50 @@ const ProductCard: FC<ProductCardType> = (props) => {
                 currentPrice={product?.currentPrice}
               />
               <Box>
-                <Button
-                  variant="contained"
-                  disableElevation
-                  sx={buttonStyles.button}
-                  disableRipple
-                  disableFocusRipple
-                  disableTouchRipple
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  Qty: <div
-                    className={styles.quantityContainer}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (onQtyDecrease) onQtyDecrease();
-                    }}
-                    role="presentation"
+                {showQuantity && (
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    sx={buttonStyles.button}
+                    disableRipple
+                    disableFocusRipple
+                    disableTouchRipple
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <div className={styles.qtyChangeButton}>-</div>
-                    {product?.quantity}
-                    <div
-                      className={styles.qtyChangeButton}
+                    Qty: <div
+                      className={styles.quantityContainer}
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (onQtyIncrease) onQtyIncrease();
+                        if (onQtyDecrease) onQtyDecrease();
                       }}
                       role="presentation"
-                    >+</div>
-                  </div>
-                </Button>
+                    >
+                      <div className={styles.qtyChangeButton}>-</div>
+                      {product?.quantity}
+                      <div
+                        className={styles.qtyChangeButton}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (onQtyIncrease) onQtyIncrease();
+                        }}
+                        role="presentation"
+                      >+</div>
+                    </div>
+                  </Button>
+                )}
+                {showSaveForLater && (
+                  <Button
+                    variant="contained"
+                    disableElevation
+                    sx={[buttonStyles.button, buttonStyles.saveForLater]}
+                    disableRipple
+                    disableFocusRipple
+                    disableTouchRipple
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    Save for later
+                  </Button>
+                )}
               </Box>
             </Box>
           </Box>
@@ -147,5 +162,8 @@ const buttonStyles = {
       backgroundColor: "#fff",
     },
   },
+  saveForLater: {
+    marginLeft: '14px'
+  }
 };
 export default ProductCard;
