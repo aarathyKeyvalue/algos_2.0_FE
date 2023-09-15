@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  cursor: pointer;
+  cursor: pointer ;
   .header {
     display: flex;
     justify-content: space-between;
@@ -58,30 +58,26 @@
         }
       }
       .plants {
-        border: 1px solid #E6FFDB;
-        background: rgba(247, 255, 243, 0.50);
         .detailsValue {
           color: #1D5503;
+          .capacity {
+            font-size: 13px;
+            letter-spacing: -0.12px;
+          }
         }
       }
       .temperature {
-        border: 1px solid #FDFDDD;
-        background: rgba(255, 255, 235, 0.60);
         .detailsValue {
           color: #EEAD05;
         }
       }
       .waterLevel {
-        border: 1px solid #E3FAFF;
-        background: rgba(250, 254, 255, 0.70);
         .detailsValue {
           font-weight: 600;
           color: #0067A1;
         }
       }
       .water {
-        border: 1px solid #DDFFFC;
-        background: rgba(244, 255, 254, 0.60);
         .detailsValue {
           font-weight: 600;
           color: #007787;

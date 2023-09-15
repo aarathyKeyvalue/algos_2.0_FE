@@ -8,7 +8,7 @@ import { CardActionArea, CardMedia } from '@mui/material';
 const PlantCard = () => {
   return (
     <Card
-      sx={{ width: '100%', paddingBottom: '0px', boxShadow: 'none' }}
+      sx={{ width: '100%', paddingBottom: '0px', boxShadow: 'none',minHeight:"111px" }}
       onClick={() => console.log('Go to plant details')}
     >
       <CardActionArea sx={{ height: '100%', width: '100%' }}>
