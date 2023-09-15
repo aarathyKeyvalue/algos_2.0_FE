@@ -1,0 +1,12 @@
+.forumContainer {
+  overflow-y: auto;
+  margin-bottom: 20px;
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .post {
+      padding: 0 15px;
+    }
+  }
+}

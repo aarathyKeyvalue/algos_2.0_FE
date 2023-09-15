@@ -73,7 +73,7 @@ const PostComponent = ({ post }: { post?: any }) => {
     <div className={styles.postContainer}>
       <div className={styles.avatar}>
         <CustomAvatar
-          src={post.author.src}
+          src={post.author.avatar}
           name={post.author.name}
           description={post.author.place}
         />
