@@ -17,6 +17,7 @@ import AppLayout from "./AppLayout";
 import Garden from "app/containers/garden/Garden";
 import CreatePost from "app/containers/create-post/CreatePost";
 import Site from "app/containers/site/Site";
+import CartLayout from "app/containers/cart-layout/CartLayout";
 import Plants from "app/containers/plants/Plants";
 import Subscribtion from "app/containers/subscribtion/Subscribtion";
 import Profile from "app/containers/profile/Profile";
@@ -37,6 +38,7 @@ const MainLayout: FC<object> = () => {
             <Route path="/app/garden" element={<Garden />} />
             <Route path="/app/community" element={<Community />} />
             <Route path="/app/home" element={<Home />} />
+            <Route path="/app/cart" element={<CartLayout />} />
           </Route>
           <Route path="/site/:id" element={<Site />} />
           <Route path="/site/:id/plants" element={<Plants />} />

@@ -20,7 +20,7 @@ const OfferCarousal = (props) => {
               height: "100%",
               borderRadius: "10px",
             }}
-          ><img src={product.image} style={{borderRadius: '10px'}} /></div>
+          ><img src={product.image} style={{ borderRadius: '10px' }} /></div>
         </div>
       ))}
     </Carousel>

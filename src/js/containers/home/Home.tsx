@@ -206,9 +206,10 @@ const Home = () => {
           showStatus={false}
           centerMode
           centerSlidePercentage={85}
+          emulateTouch
         >
           {products.map((product) => (
-            <div style={{ width: "95%",  }}>
+            <div style={{ width: "95%", }}>
               <ArticleCard />
             </div>
           ))}
