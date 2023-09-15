@@ -11,7 +11,6 @@ import styles from "./styles.scss";
 import Community from "app/containers/community/Community";
 import ShopByCategory from "app/containers/shop-by-category/ShopByCategory";
 import SplashScreen from "app/containers/splashScreen/SplashScreen";
-import HomeLayout from "./HomeLayout";
 import ProductDetails from "app/containers/product-details/ProductDetails";
 import ViewInRoom from "app/containers/view-in-room/ViewInRoom";
 import AppLayout from "./AppLayout";
@@ -27,7 +26,6 @@ const MainLayout: FC<object> = () => {
           <Route path="/splash" element={<SplashScreen />} />
           <Route path="/app" element={<AppLayout />}>
             <Route path="/app" element={<Navigate to="/app/home" />} />
-            <Route path="/app/home" element={<HomeLayout />} />
             <Route path="/app/shop" element={<Shop />} />
             <Route path="/app/shop-by-category" element={<ShopByCategory />} />
             <Route path="/app/garden" element={<Garden />} />
