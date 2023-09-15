@@ -10,10 +10,9 @@ const HomeLayout = () => {
 
   return (
     <div className={styles.homeLayoutContainer}> 
-      <Header hasCart titleCenter hasBack hasSearch title="Shop" />
+      <Header titleCenter hasSearch hasMenu title={<img className={styles.urban} src="assets/svg/app/urbanBotanica.svg" />} />
     <Outlet/>
-    <Footer>
-      <FooterMenu /></Footer></div>
+    </div>
   )
 }
 
