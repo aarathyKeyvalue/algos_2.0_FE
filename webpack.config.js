@@ -114,11 +114,11 @@ module.exports = {
     ]
   },
   plugins: [
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     { from: './assets', to: './assets' }
-    //   ]
-    // }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './assets', to: './assets' }
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/index.css'
     }),
