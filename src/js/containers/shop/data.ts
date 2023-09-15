@@ -32,4 +32,37 @@ const categories = [
   },
 ];
 
-export default categories;
+const products = [
+  {
+    image:
+      "https://sensorex.com/wp-content/uploads/2022/02/SENSOREX-0216-HIRES-4-2-1.jpg",
+    name: "pH Down Solution",
+  },
+  {
+    image:
+      "https://sensorex.com/wp-content/uploads/2022/02/SENSOREX-0216-HIRES-4-2-1.jpg",
+    name: "pH Down Solution",
+  },
+  {
+    image:
+      "https://sensorex.com/wp-content/uploads/2022/02/SENSOREX-0216-HIRES-4-2-1.jpg",
+    name: "pH Down Solution",
+  },
+  {
+    image:
+      "https://sensorex.com/wp-content/uploads/2022/02/SENSOREX-0216-HIRES-4-2-1.jpg",
+    name: "pH Down Solution",
+  },
+  {
+    image:
+      "https://sensorex.com/wp-content/uploads/2022/02/SENSOREX-0216-HIRES-4-2-1.jpg",
+    name: "pH Down Solution",
+  },
+  {
+    image:
+      "https://sensorex.com/wp-content/uploads/2022/02/SENSOREX-0216-HIRES-4-2-1.jpg",
+    name: "pH Down Solution",
+  },
+];
+
+export { categories, products };
