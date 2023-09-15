@@ -11,6 +11,7 @@ import Login from 'app/containers/login/Login';
 import Shop from 'app/containers/shop/Shop';
 
 import styles from './styles.scss';
+import ProductDetails from 'app/containers/product-details/ProductDetails';
 
 const MainLayout:FC<object> = () => {
   return (
@@ -21,6 +22,7 @@ const MainLayout:FC<object> = () => {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product-details" element={<ProductDetails />}/>
         </Routes>
       </Router>
     </div>
