@@ -15,6 +15,7 @@ import ProductDetails from "app/containers/product-details/ProductDetails";
 import ViewInRoom from "app/containers/view-in-room/ViewInRoom";
 import AppLayout from "./AppLayout";
 import Garden from "app/containers/garden/Garden";
+import CreatePost from "app/containers/create-post/CreatePost";
 
 const MainLayout: FC<object> = () => {
   return (
@@ -33,6 +34,7 @@ const MainLayout: FC<object> = () => {
           </Route>
           <Route path="/product-details" element={<ProductDetails />} />
           <Route path="/view-in-room" element={<ViewInRoom />} />
+          <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </Router>
     </div>

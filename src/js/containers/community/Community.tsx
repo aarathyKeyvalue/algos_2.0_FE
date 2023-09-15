@@ -6,8 +6,10 @@ import Header from "app/components/header/Header";
 import CommunityHeader from "./components/community-header/CommunityHeader";
 import { COMMUNITY_TABS, COMMUNITY_TABS_NAMES } from "./constants";
 import Forum from "./components/forum/Forum";
+import { useNavigate } from "react-router-dom";
 
 const Community = () => {
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState(COMMUNITY_TABS[0]);
 
   const handleTabSelection = (tab) => {
@@ -32,7 +34,14 @@ const Community = () => {
         {selectedTab.name === COMMUNITY_TABS_NAMES.FORUM && <Forum />}
       </div>
       {selectedTab.name === COMMUNITY_TABS_NAMES.FORUM && (
-        <div className={styles.addNewPost}>+</div>
+        <div
+          className={styles.addNewPost}
+          onClick={() => {
+            navigate("/create-post");
+          }}
+        >
+          +
+        </div>
       )}
     </div>
   );
