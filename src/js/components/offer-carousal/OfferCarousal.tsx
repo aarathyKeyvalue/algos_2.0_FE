@@ -10,7 +10,6 @@ const OfferCarousal = (props) => {
       centerMode
       emulateTouch
       centerSlidePercentage={97}
-      emulateTouch
       infiniteLoop
     >
       {props.offers.map((product) => (
