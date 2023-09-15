@@ -19,7 +19,7 @@ const Shop = () => {
 
   return (
     <div className="scroll-wrapper">
-      <Header hasMenu titleCenter hasSearch title="Shop" />
+      <Header hasSearch hasCart hasBack title="Shop by category" />
       <div className={styles.container}>
         <div className={styles.categories}>
           {categories.map((category) => (
