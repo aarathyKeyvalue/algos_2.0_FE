@@ -1,18 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material/styles";
 
-import store from 'app/reducers/store/store';
+import store from "app/reducers/store/store";
+import theme from "./theme";
 
-import App from './app';
-import './index.css';
+import App from "./app";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root') as Element);
+const root = ReactDOM.createRoot(document.getElementById("root") as Element);
+
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
+    <ThemeProvider theme={theme}>
       <App />
-    </React.StrictMode>
+    </ThemeProvider>
   </Provider>
 );
 
