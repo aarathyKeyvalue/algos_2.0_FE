@@ -6,6 +6,7 @@ import { Box, Button } from "@mui/material";
 import muiStyles from "./styles";
 import { categories, products } from "./data";
 import Header from "app/components/header/Header";
+import { Carousel } from "react-responsive-carousel";
 
 const Shop = () => {
   return (
@@ -30,6 +31,28 @@ const Shop = () => {
             GreenMarket
           </Button>
         </div>
+
+        <Carousel
+          showThumbs={false}
+          showArrows={false}
+          showStatus={false}
+          centerMode
+          centerSlidePercentage={97}
+        >
+          {products.map((product) => (
+            <div style={{ width: "100%", height: "160px" }}>
+              <div
+                style={{
+                  width: "97%",
+                  height: "100%",
+                  backgroundColor: "gray",
+                  borderRadius: "10px",
+                }}
+              ></div>
+            </div>
+          ))}
+        </Carousel>
+
         <div className={styles.category}>
           <div className={styles.sectionTitle} style={{ marginBottom: 14 }}>
             Purchase by category

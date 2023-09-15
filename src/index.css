@@ -22,3 +22,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.carousel .control-dots .dot {
+  box-shadow: none !important;
+}
+
