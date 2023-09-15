@@ -24,7 +24,7 @@ const SiteItem = (props) => {
       </div>
       <div className={styles.sections}>
         <div className={styles.section}>
-          <div className={styles.plants}>
+          <div className={`${styles.plants} ${styles.each}`}>
             <div className={styles.details}>
               <div className={styles.detailsHeader}>Plants</div>
               <div className={styles.detailsValue}>{plantCount}</div>
@@ -35,7 +35,7 @@ const SiteItem = (props) => {
           </div>
         </div>
         <div className={styles.section}>
-          <div className={styles.temperature}>
+          <div className={`${styles.temperature} ${styles.each}`}>
             <div className={styles.details}>
               <div className={styles.detailsHeader}>Temperature</div>
               <div className={styles.detailsValue}>{temp}&deg;C</div>
@@ -46,7 +46,7 @@ const SiteItem = (props) => {
           </div>
         </div>
         <div className={styles.section}>
-          <div className={styles.waterLevel}>
+          <div className={`${styles.waterLevel} ${styles.each}`}>
             <div className={styles.details}>
               <div className={styles.detailsHeader}>Water level</div>
               <div className={styles.detailsValue}>{waterLevel} Ltrs</div>
@@ -57,7 +57,7 @@ const SiteItem = (props) => {
           </div>
         </div>
         <div className={styles.section}>
-          <div className={styles.water}>
+          <div className={`${styles.water} ${styles.each}`}>
             <div className={styles.details}>
               <div className={styles.detailsHeader}>Humidity</div>
               <div className={styles.detailsValue}>{humidity}%</div>
@@ -71,3 +71,5 @@ const SiteItem = (props) => {
     </div>
   )
 }
+
+export default SiteItem;
