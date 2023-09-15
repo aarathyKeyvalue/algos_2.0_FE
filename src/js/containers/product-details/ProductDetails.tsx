@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 
 import BasicRating from 'app/components/BasicRating/BasicRating';
 import PriceView from 'app/components/PriceView/PriceView';
+import { Button } from '@mui/material';
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -111,12 +112,21 @@ const ProductDetails = () => {
         </div>
       </div>
       <div className={styles.callToActionsContainer}>
-        <div className={`${styles.button} ${styles.primaryButton}`}>
+
+        <Button
+          variant="contained"
+          disableElevation
+          className={`${styles.button} ${styles.primaryButton}`}
+        >
           Buy now
-        </div>
-        <div className={`${styles.button} ${styles.secondaryButton}`}>
+        </Button>
+        <Button
+          variant="contained"
+          disableElevation
+          className={`${styles.button} ${styles.secondaryButton}`}
+        >
           Add to cart
-        </div>
+        </Button>
       </div>
     </>
   )
