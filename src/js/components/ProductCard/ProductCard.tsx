@@ -4,17 +4,28 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, CardMedia } from "@mui/material";
+import { Button, CardActionArea, CardMedia } from "@mui/material";
 
 import BasicRating from "app/components/BasicRating/BasicRating";
 import PriceView from "app/components/PriceView/PriceView";
+import styles from "./styles.scss";
 
 interface ProductCardType {
   product: any;
+  showQuantity?: boolean;
+  showSaveForLater?: boolean;
+  onQtyDecrease?: () => void;
+  onQtyIncrease?: () => void;
 }
 
 const ProductCard: FC<ProductCardType> = (props) => {
-  const { product } = props;
+  const {
+    product,
+    showQuantity = false,
+    showSaveForLater = false,
+    onQtyDecrease,
+    onQtyIncrease
+  } = props;
   const navigate = useNavigate();
   return (
     <Card
@@ -81,6 +92,37 @@ const ProductCard: FC<ProductCardType> = (props) => {
                 actualPrice={product?.actualPrice}
                 currentPrice={product?.currentPrice}
               />
+              <Box>
+                <Button
+                  variant="contained"
+                  disableElevation
+                  sx={buttonStyles.button}
+                  disableRipple
+                  disableFocusRipple
+                  disableTouchRipple
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Qty: <div
+                    className={styles.quantityContainer}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onQtyDecrease) onQtyDecrease();
+                    }}
+                    role="presentation"
+                  >
+                    <div className={styles.qtyChangeButton}>-</div>
+                    {product?.quantity}
+                    <div
+                      className={styles.qtyChangeButton}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (onQtyIncrease) onQtyIncrease();
+                      }}
+                      role="presentation"
+                    >+</div>
+                  </div>
+                </Button>
+              </Box>
             </Box>
           </Box>
         </CardContent>
@@ -89,4 +131,20 @@ const ProductCard: FC<ProductCardType> = (props) => {
   );
 };
 
+const buttonStyles = {
+  button: {
+    borderRadius: 20,
+    height: "38px",
+    textTransform: "none",
+    fontWeight: "bold",
+    width: 'fit-content',
+    backgroundColor: "#fff",
+    border: "1px solid #1D1D1D",
+    color: "#1D1D1D",
+    padding: '4px 9px',
+    "&:hover": {
+      backgroundColor: "#fff",
+    },
+  },
+};
 export default ProductCard;

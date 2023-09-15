@@ -16,6 +16,7 @@ import ViewInRoom from "app/containers/view-in-room/ViewInRoom";
 import AppLayout from "./AppLayout";
 import Garden from "app/containers/garden/Garden";
 import Site from "app/containers/site/Site";
+import CartLayout from "app/containers/cart-layout/CartLayout";
 
 const MainLayout: FC<object> = () => {
   return (
@@ -31,6 +32,7 @@ const MainLayout: FC<object> = () => {
             <Route path="/app/garden" element={<Garden />} />
             <Route path="/app/community" element={<Community />} />
             <Route path="/app/home" element={<Home />} />
+            <Route path="/app/cart" element={<CartLayout />} />
           </Route>
           <Route path="/site/:id" element={<Site />} />
           <Route path="/product-details" element={<ProductDetails />} />
