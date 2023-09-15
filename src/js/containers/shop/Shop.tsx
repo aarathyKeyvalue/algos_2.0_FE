@@ -8,6 +8,7 @@ import { categories, products } from "./data";
 import Header from "app/components/header/Header";
 import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router-dom";
+import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
 
 const Shop = () => {
   const [selectedTab, setSelectedTab] = useState("equipements");
@@ -46,26 +47,7 @@ const Shop = () => {
           </Button>
         </div>
 
-        <Carousel
-          showThumbs={false}
-          showArrows={false}
-          showStatus={false}
-          centerMode
-          centerSlidePercentage={97}
-        >
-          {products.map((product) => (
-            <div style={{ width: "100%", height: "160px" }}>
-              <div
-                style={{
-                  width: "97%",
-                  height: "100%",
-                  backgroundColor: "gray",
-                  borderRadius: "10px",
-                }}
-              ></div>
-            </div>
-          ))}
-        </Carousel>
+        <OfferCarousal />
 
         <div className={styles.category}>
           <div className={styles.sectionTitle} style={{ marginBottom: 14 }}>
@@ -78,7 +60,9 @@ const Shop = () => {
                   image={category.image}
                   size={60}
                   label={category.label}
-                  onSelect={() => navigate(`/app/shop-by-category?category=${category.label}`)}
+                  onSelect={() =>
+                    navigate(`/app/shop-by-category?category=${category.label}`)
+                  }
                 />
               </div>
             ))}
