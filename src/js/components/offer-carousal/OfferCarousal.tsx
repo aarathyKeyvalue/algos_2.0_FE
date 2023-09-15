@@ -9,6 +9,7 @@ const OfferCarousal = (props) => {
       showArrows={false}
       showStatus={false}
       centerMode
+      emulateTouch
       centerSlidePercentage={97}
       infiniteLoop
     >

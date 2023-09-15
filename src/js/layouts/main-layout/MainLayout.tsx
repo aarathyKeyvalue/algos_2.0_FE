@@ -11,11 +11,11 @@ import styles from "./styles.scss";
 import Community from "app/containers/community/Community";
 import ShopByCategory from "app/containers/shop-by-category/ShopByCategory";
 import SplashScreen from "app/containers/splashScreen/SplashScreen";
-import HomeLayout from "./HomeLayout";
 import ProductDetails from "app/containers/product-details/ProductDetails";
 import ViewInRoom from "app/containers/view-in-room/ViewInRoom";
 import AppLayout from "./AppLayout";
 import Garden from "app/containers/garden/Garden";
+import CreatePost from "app/containers/create-post/CreatePost";
 import Site from "app/containers/site/Site";
 import Plants from "app/containers/plants/Plants";
 import Subscribtion from "app/containers/subscribtion/Subscribtion";
@@ -40,6 +40,7 @@ const MainLayout: FC<object> = () => {
           <Route path="/site/:id/plants" element={<Plants />} />
           <Route path="/product-details" element={<ProductDetails />} />
           <Route path="/view-in-room" element={<ViewInRoom />} />
+          <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </Router>
     </div>

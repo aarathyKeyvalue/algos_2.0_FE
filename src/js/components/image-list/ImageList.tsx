@@ -10,7 +10,7 @@ const CustomImageList = ({ imageList = [], onImageClick = (image: any) => { } })
         {imageList.map((image: any) => (
           <ImageListItem key={image.src}>
             <img
-              src={`${image.src}?w=85&h=85&auto=format`}
+              src={`${image.src}?w=85&h=85&fit=crop&auto=format`}
               alt={image.title}
               className={styles.image}
               onClick={() => onImageClick(image)}
