@@ -5,21 +5,19 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-
-import Login from 'app/containers/login/Login';
 import Shop from 'app/containers/shop/Shop';
 
 import styles from './styles.scss';
+import HomeLayout from './HomeLayout';
 
 const MainLayout:FC<object> = () => {
   return (
     <div className={styles.mainLayoutWrapper}>
       <Router>
         <Routes>
-          <Route path="" element={<Navigate to="/login" />} />
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="" element={<Navigate to="/home" />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<HomeLayout />} />
           <Route path="/shop" element={<Shop />} />
         </Routes>
       </Router>
