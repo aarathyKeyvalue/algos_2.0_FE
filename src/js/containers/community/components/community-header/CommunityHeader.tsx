@@ -5,32 +5,23 @@ import styles from "./styles.scss";
 import { COMMUNITY_TABS } from "../../constants";
 import Category from "app/components/category/Category";
 
-const CommunityHeader = () => {
-  const [selectedTab, setSelectedTab] = useState(COMMUNITY_TABS[0]);
-
-  const handleTabSelection = (tab) => {
-    setSelectedTab(tab);
-  };
-
+const CommunityHeader = ({ onSelectTab, selectedTab }) => {
   return (
     <div className={styles.headerContainer}>
-      <Carousel
-        showThumbs={false}
-        showArrows={false}
-        showIndicators={false}
-        emulateTouch
-      >
+      <div className={styles.headerTabs}>
         {COMMUNITY_TABS.map((tab) => (
-          <Category
-            key={tab.name}
-            image={tab.src}
-            label={tab.name}
-            isSelected={selectedTab.name === tab.name}
-            onSelect={() => handleTabSelection(tab)}
-            size={50}
-          />
+          <div className={styles.category}>
+            <Category
+              key={tab.name}
+              image={tab.src}
+              label={tab.name}
+              isSelected={selectedTab.name === tab.name}
+              onSelect={() => onSelectTab(tab)}
+              size={50}
+            />
+          </div>
         ))}
-      </Carousel>
+      </div>
     </div>
   );
 };
