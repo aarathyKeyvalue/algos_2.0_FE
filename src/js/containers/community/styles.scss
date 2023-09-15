@@ -1,0 +1,14 @@
+.communityContainer {
+  .optionsContainer {
+    background-color: burlywood;
+    height: 100px;
+  }
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .post {
+      padding: 0 15px;
+    }
+  }
+}
