@@ -1,0 +1,21 @@
+import { LegacyRef } from 'react';
+export type ITextAreaProps = {
+    className?: string;
+    textAreaRef?: LegacyRef<HTMLTextAreaElement> | undefined;
+    placeholderKey?: string;
+    defaultPlaceholder?: string;
+    type?: string;
+    readOnly?: boolean;
+    onClick?: (e: MouseEvent) => void;
+    value?: string;
+    onChange?: (value: string) => void;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onClear?: () => void;
+    onFocus?: () => void;
+    onBlur?: (value: string) => void;
+    onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    rows?: number;
+    maxHeight?: string;
+    minHeight?: string;
+};
