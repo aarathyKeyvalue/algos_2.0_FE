@@ -8,6 +8,9 @@
   background: #fff;
   box-shadow: 0px 4px 14px 0px rgba(104, 104, 104, 0.06);
   position: relative;
+  img {
+    cursor: pointer;
+  }
   .headerMenu {
     height: 12px;
     width: 16px;
@@ -15,6 +18,7 @@
   .headerBack {
     height: 24px;
     width: 24px;
+    cursor: pointer;
   }
   .headerTitle {
     font-size: 16px;
@@ -33,6 +37,14 @@
     .headerCart {
       height: 32px;
       width: 32px;
+    }
+    .headerRefresh {
+      width: 24px;
+      height: 24px;
+    }
+    .headerVoice {
+      height: 26px;
+      width: 59px;
     }
   }
 }

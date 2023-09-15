@@ -15,6 +15,7 @@ import ProductDetails from "app/containers/product-details/ProductDetails";
 import ViewInRoom from "app/containers/view-in-room/ViewInRoom";
 import AppLayout from "./AppLayout";
 import Garden from "app/containers/garden/Garden";
+import Site from "app/containers/site/Site";
 
 const MainLayout: FC<object> = () => {
   return (
@@ -25,12 +26,13 @@ const MainLayout: FC<object> = () => {
           <Route path="/splash" element={<SplashScreen />} />
           <Route path="/app" element={<AppLayout />}>
             <Route path="/app" element={<Navigate to="/app/home" />} />
-            <Route path="x" element={<HomeLayout />} />
+            <Route path="/app/home" element={<HomeLayout />} />
             <Route path="/app/shop" element={<Shop />} />
             <Route path="/app/shop-by-category" element={<ShopByCategory />} />
             <Route path="/app/garden" element={<Garden />} />
             <Route path="/app/community" element={<Community />} />
           </Route>
+          <Route path="/site/:id" element={<Site />} />
           <Route path="/product-details" element={<ProductDetails />} />
           <Route path="/view-in-room" element={<ViewInRoom />} />
         </Routes>

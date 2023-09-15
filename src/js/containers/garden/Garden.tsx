@@ -5,7 +5,7 @@ import Header from "app/components/header/Header";
 
 import muiStyles from 'app/containers/shop/styles';
 import mui from './styles';
-import { MY_PLANTS, MY_SITES, TYPES } from "./constants";
+import { MY_SITES, TYPES } from "./constants";
 import styles from './styles.scss';
 import SiteItems from "app/components/siteItems/SiteItems";
 

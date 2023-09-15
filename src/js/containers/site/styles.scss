@@ -1,0 +1,166 @@
+.siteContainer {
+  width: 100%;
+  height: 100%;
+  .header {
+    display: flex;
+    flex-direction: column;
+    .headerTitle {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .headerSub {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .content {
+    padding: 22px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .plants {
+      padding: 16px 21px;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      .plantsHeader {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .count {
+          font-size: 18px;
+          font-weight: 600;
+          letter-spacing: -0.15px;
+        }
+        .capacity {
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: -0.11px;
+        }
+        .sub {
+          font-size: 18px;
+          font-weight: 400;
+          letter-spacing: -0.15px;
+        }
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+    .crops {
+      display: flex;
+      width: 100%;
+      gap: calc((100% - 5 * 48px)/4);
+      row-gap: 16px;
+      flex-wrap: wrap;
+      .eachCrop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        .cropImage {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: rgba(255, 244, 204, 0.50);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .image {
+            width: 36px;
+            height: 36px;
+          }
+          .tilted {
+            transform: rotate(-15deg);
+          }
+        }
+        .cropName {
+          max-width: 48px;
+          text-align: center;
+          font-size: 11px;
+          letter-spacing: -0.1px;
+        }
+      }
+      .moreCrops {
+        background: #E6FFDB;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+    .twoSections {
+      display: flex;
+      gap: 21px;
+    }
+    .eachDetail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      .header {
+        color: #1D1D1D;
+        letter-spacing: -0.15px;
+      }
+      .mainValue {
+        font-weight: 600;
+        font-size: 22px;
+      }
+      .waterLevel {
+        color: #0067A1;
+      }
+      .lightValue, .temperature {
+        color: #1D5503;
+      }
+      .phValue {
+        color: #007787;
+      }
+
+    }
+    .light,
+    .temp,
+    .waterLevelContainer {
+      padding: 16px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .light, .temp {
+      width: calc((100% - 21px)/2);
+    }
+      .details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .infos {
+          display: flex;
+          gap: 6px;
+          flex-direction: column;
+          font-size: 10px;
+        }
+        .phInfo {
+          color: #0067A1;
+        }
+        .waterInfo {
+          color: #0067A1;
+        }
+        .info {
+          color: #1D5503;
+        }
+        .max {
+          color: #00000060;
+          font-style: italic;
+          letter-spacing: -0.1;
+        }
+      }
+  }
+}
