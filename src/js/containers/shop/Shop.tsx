@@ -6,6 +6,7 @@ import { Box, Button } from "@mui/material";
 import muiStyles from "./styles";
 import { categories, products } from "./data";
 import Header from "app/components/header/Header";
+import Loader from "app/components/loader";
 import { useNavigate } from "react-router-dom";
 import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
 import { useGetCategoriesQuery } from "./apiSlice";
@@ -18,6 +19,7 @@ const Shop = () => {
 
   return (
     <div className="scroll-wrapper">
+      <Loader isLoading={isLoading} />
       <Header hasMenu titleCenter hasSearch title="Shop" />
       <div className={styles.container}>
         <div className={styles.mainTab}>
