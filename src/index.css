@@ -27,7 +27,7 @@ body {
 }
 .MuiPaper-root, .MuiBackdrop-root {
   position: absolute !important;
-  left: calc((100% - 450px)/2) !important;
+  left: calc((100% - 475px)/2) !important;
 }
 .MuiPaper-root {
   animation: animation 0.2s linear 0s 1 forwards;

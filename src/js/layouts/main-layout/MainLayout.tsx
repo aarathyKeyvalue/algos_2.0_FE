@@ -19,6 +19,7 @@ import CreatePost from "app/containers/create-post/CreatePost";
 import Site from "app/containers/site/Site";
 import Plants from "app/containers/plants/Plants";
 import Subscribtion from "app/containers/subscribtion/Subscribtion";
+import Profile from "app/containers/profile/Profile";
 
 const MainLayout: FC<object> = () => {
   return (
@@ -28,6 +29,7 @@ const MainLayout: FC<object> = () => {
           <Route path="" element={<Navigate to="/splash" replace />} />
           <Route path="/splash" element={<SplashScreen />} />
           <Route path="/subscribtion" element={<Subscribtion />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/app" element={<AppLayout />}>
             <Route path="/app" element={<Navigate to="/app/home" replace />} />
             <Route path="/app/shop" element={<Shop />} />

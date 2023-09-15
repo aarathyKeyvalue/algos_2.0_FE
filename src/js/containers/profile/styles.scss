@@ -1,0 +1,79 @@
+.profileImage {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  img {
+    width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  }
+}
+.sections {
+  margin: 9px 20px;
+  width: calc(100% - 40px);
+  .eachSection {
+    border-bottom: 1px solid #EFEFEF;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    padding: 16px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d1d1d;
+    .professionalContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .professional {
+      border-radius: 30px;
+      background: #2D8304;
+      display: flex;
+      gap: 4px;
+      padding: 6px 9px;
+      color: white;
+      font-weight: 400;
+    }
+    .subs {
+      font-style: italic;
+      color: #00000050;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .personal {
+      font-size: 14px;
+      letter-spacing: -0.14px;
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      font-weight: 400;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .manage {
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: -1px;
+    }
+  }
+}
+.profileName {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.18px;
+}
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

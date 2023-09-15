@@ -4,7 +4,7 @@ import ProductCard from "app/components/product-card/ProductCard";
 import styles from "./styles.scss";
 import { Box, Button } from "@mui/material";
 import muiStyles from "./styles";
-import { categories, products } from "./data";
+import { categories, products, shopOffers } from "./data";
 import Header from "app/components/header/Header";
 import Loader from "app/components/loader";
 import { useNavigate } from "react-router-dom";
@@ -51,7 +51,7 @@ const Shop = () => {
           </Button>
         </div>
 
-        <OfferCarousal />
+        <OfferCarousal offers={shopOffers} />
 
         <div className={styles.category}>
           <div className={styles.sectionTitle} style={{ marginBottom: 14 }}>

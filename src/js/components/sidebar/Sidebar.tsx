@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -13,6 +14,7 @@ import styles from './styles';
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function Sidebar() {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -93,7 +95,7 @@ export default function Sidebar() {
                 <span>Sherlock</span>
                 <img src="assets/svg/golden-star.svg" alt="" />
               </div>
-              <Button sx={[styles.secondary, styles.button]}>
+              <Button sx={[styles.secondary, styles.button]} onClick={() => navigate('/profile')}>
                 Manage Profile
               </Button>
             </div>
