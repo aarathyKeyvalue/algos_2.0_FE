@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Shop from "app/containers/shop/Shop";
-
+import SplashScreen from 'app/containers/splashScreen/SplashScreen';
 import styles from "./styles.scss";
 import HomeLayout from "./HomeLayout";
 import Header from "app/components/header/Header";
@@ -17,11 +17,10 @@ import FooterMenu from "app/components/footerMenu/FooterMenu";
 const MainLayout: FC<object> = () => {
   return (
     <div className={styles.mainLayoutWrapper}>
-      <Header hasMenu titleCenter hasSearch title="Shop" />
       <Router>
         <Routes>
-          <Route path="" element={<Navigate to="/home" />} />
-          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="" element={<Navigate to="/splash" />} />
+          <Route path="/splash" element={<SplashScreen />} />
           <Route path="/home" element={<HomeLayout />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product-details" element={<ProductDetails />} />

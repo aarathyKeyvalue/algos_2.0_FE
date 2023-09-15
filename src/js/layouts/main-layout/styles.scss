@@ -1,11 +1,14 @@
 .mainLayoutWrapper {
   width: 100%;
   height: 100%;
-  background-color: #f8faf9;
+  background-color: white;
   position: relative;
 }
 
 .homeLayoutContainer {
   position: relative;
   height: 100%;
+  .urban {
+    width: 200px;
+  }
 }
