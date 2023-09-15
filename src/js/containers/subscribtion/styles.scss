@@ -1,0 +1,63 @@
+.subscribtionContainer {
+  background: #FFF9E9;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  .urban {
+    width: 200px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .title {
+    margin-top: 23px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.4;
+    color: #1d1d1d;
+  }
+  .subTitle {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 20px;
+    width: calc(100% - 87px);
+  }
+  .benefits {
+    margin: 9px 23px;
+    width: calc(100% - 46px);
+    border-radius: 10px;
+    border: 1px solid #FFF6DE;
+    background: #FFFFF9;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    .eachBenefit {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: -0.26px;
+      img {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+  .willDo {
+    margin-top: 45px;
+  }
+  .pack {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 14px;
+    img {
+      width: calc((100% - 60px)/2);
+    }
+  }
+}

@@ -61,7 +61,7 @@ const Shop = () => {
                   size={60}
                   label={category.label}
                   onSelect={() =>
-                    navigate(`/app/shop-by-category?category=${category.label}`)
+                    navigate(`/app/shop-by-category?category=${category.label}`, { replace: true })
                   }
                 />
               </div>

@@ -10,6 +10,7 @@ const OfferCarousal = (props) => {
       showStatus={false}
       centerMode
       centerSlidePercentage={97}
+      infiniteLoop
     >
       {products.map((product) => (
         <div style={{ width: "100%", height: "160px" }}>
