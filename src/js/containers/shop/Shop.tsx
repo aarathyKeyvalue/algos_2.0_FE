@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Category from "app/components/category/Category";
 import ProductCard from "app/components/product-card/ProductCard";
 import styles from "./styles.scss";
@@ -9,6 +9,7 @@ import Header from "app/components/header/Header";
 import { Carousel } from "react-responsive-carousel";
 
 const Shop = () => {
+  const [selectedTab, setSelectedTab] = useState("equipements");
   return (
     <div className="scroll-wrapper">
       <Header hasMenu titleCenter hasSearch title="Shop" />
@@ -17,16 +18,26 @@ const Shop = () => {
           <Button
             variant="contained"
             disableElevation
-            sx={[muiStyles.button, muiStyles.primary]}
-            onClick={() => null}
+            sx={[
+              muiStyles.button,
+              selectedTab === "equipements"
+                ? muiStyles.primary
+                : muiStyles.secondary,
+            ]}
+            onClick={() => setSelectedTab("equipements")}
           >
             Equipments
           </Button>
           <Button
             variant="contained"
             disableElevation
-            sx={[muiStyles.button, muiStyles.secondary]}
-            onClick={() => null}
+            sx={[
+              muiStyles.button,
+              selectedTab === "green-market"
+                ? muiStyles.primary
+                : muiStyles.secondary,
+            ]}
+            onClick={() => setSelectedTab("green-market")}
           >
             GreenMarket
           </Button>
