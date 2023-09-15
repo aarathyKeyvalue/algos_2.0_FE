@@ -7,6 +7,9 @@
   "source": "src/index.tsx",
   "types": "build/types/index.d.ts",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.9",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/lodash": "^4.14.194",
     "@types/redux-batched-subscribe": "^0.1.4",
