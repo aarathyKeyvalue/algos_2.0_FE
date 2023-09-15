@@ -19,6 +19,7 @@ const ProductCard: FC<ProductCardType> = (props) => {
   return (
     <Card
       sx={{
+        position: 'relative !important',
         width: "100%",
         paddingBottom: "0px",
         boxShadow: "none",

@@ -5,6 +5,8 @@ import styles from "./styles.scss";
 const ProductCard = (props) => {
   const { image, name, offerPrize, prize } = props;
 
+  console.log(props)
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.img}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Category from "app/components/category/Category";
 import ProductCard from "app/components/product-card/ProductCard";
 import styles from "./styles.scss";
@@ -9,13 +9,22 @@ import Header from "app/components/header/Header";
 import Loader from "app/components/loader";
 import { useNavigate } from "react-router-dom";
 import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
-import { useGetCategoriesQuery } from "./apiSlice";
+import { useGetCategoriesQuery, useGetProductsQuery } from "./apiSlice";
 
 const Shop = () => {
   const [selectedTab, setSelectedTab] = useState("equipments");
   const navigate = useNavigate();
 
   const { data, isLoading } = useGetCategoriesQuery({});
+  const { data: productsData, isLoading: isProductsLoading } =
+    useGetProductsQuery({});
+
+  const seedsList = productsData?.data?.filter(
+    (pdt) => pdt.category.name === "Seeds"
+  );
+  const nutrientsList = productsData?.data?.filter(
+    (pdt) => pdt.category.name === "Nutrients"
+  );
 
   return (
     <div className="scroll-wrapper">
@@ -65,7 +74,7 @@ const Shop = () => {
                   size={60}
                   label={category.name}
                   onSelect={() =>
-                    navigate(`/app/shop-by-category?category=${category.id}`, { replace: true })
+                    navigate(`/app/shop-by-category?category=${category.id}`)
                   }
                 />
               </div>
@@ -73,55 +82,66 @@ const Shop = () => {
           </div>
         </div>
 
-        <div
-          className={styles.category}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginTop: 28,
-            marginBottom: 15,
-          }}
-        >
-          <div className={styles.sectionTitle}>Purchase by category</div>
-          <img src="assets/svg/shop/arrow-right.svg" alt="" width={20} />
-        </div>
-        <div className={styles.categories}>
-          {products.map((product) => (
-            <div style={{ marginRight: 18 }}>
-              <ProductCard
-                image={product.image}
-                name={product.name}
-                offerPrize={product.offerPrize}
-                prize={product.prize}
-              />
+        {nutrientsList?.length > 0 && (
+          <>
+            <div
+              className={styles.category}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: 28,
+                marginBottom: 15,
+              }}
+            >
+              <div className={styles.sectionTitle}>
+                Nutrients for your plants
+              </div>
+              <img src="assets/svg/shop/arrow-right.svg" alt="" width={20} />
             </div>
-          ))}
-        </div>
 
-        <div
-          className={styles.category}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginTop: 28,
-            marginBottom: 15,
-          }}
-        >
-          <div className={styles.sectionTitle}>Seed suggetions</div>
-          <img src="assets/svg/shop/arrow-right.svg" alt="" width={20} />
-        </div>
-        <div className={styles.categories}>
-          {products.map((product) => (
-            <div style={{ marginRight: 18 }}>
-              <ProductCard
-                image={product.image}
-                name={product.name}
-                offerPrize={product.offerPrize}
-                prize={product.prize}
-              />
+            <div className={styles.categories}>
+              {nutrientsList?.map((product) => (
+                <div style={{ marginRight: 18 }}>
+                  <ProductCard
+                    image={product.image}
+                    name={product.name}
+                    offerPrize={product.price * 0.9}
+                    prize={product.price}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
+
+        {seedsList?.length > 0 && (
+          <>
+            <div
+              className={styles.category}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginTop: 28,
+                marginBottom: 15,
+              }}
+            >
+              <div className={styles.sectionTitle}>Seed suggetions</div>
+              <img src="assets/svg/shop/arrow-right.svg" alt="" width={20} />
+            </div>
+            <div className={styles.categories}>
+              {seedsList?.map((product) => (
+                <div style={{ marginRight: 18 }}>
+                  <ProductCard
+                    image={product.image}
+                    name={product.name}
+                    offerPrize={product.price * 0.9}
+                    prize={product.price}
+                  />
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

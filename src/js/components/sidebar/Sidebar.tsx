@@ -162,9 +162,9 @@ export default function Sidebar() {
 
   return (
     <React.Fragment key={'left'}>
-      <Button onClick={toggleDrawer('left', true)}>
-        <img src="assets/svg/header/menu.svg" />
-      </Button>
+      
+        <img role='presentation'  onClick={()=>setState({...state, left: true})}  src="assets/svg/header/menu.svg" />
+     
       {state['left'] && (
         <Drawer
           anchor={'left'}

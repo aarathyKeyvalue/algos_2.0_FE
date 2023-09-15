@@ -7,7 +7,12 @@ const shopeApis = baseApi.injectEndpoints({
         url: "/products/categories"
       }),
     }),
+    getProducts: builder.query({
+      query: (categories) => ({
+        url: categories ? `/products?categoryIds=${JSON.stringify(categories)}` : `/products`
+      }),
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery } = shopeApis;
+export const { useGetCategoriesQuery, useGetProductsQuery, useLazyGetProductsQuery } = shopeApis;
