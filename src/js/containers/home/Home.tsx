@@ -172,10 +172,11 @@ const Home = () => {
                 </div>
               </div>
               <img
-                src="assets/img/watering.png"
+                src="assets/img/smiley.png"
                 alt=""
                 width={33}
-                style={{ marginTop: 10 }}
+                height={33}
+                style={{ position: 'relative', top: 12 }}
               />
             </div>
           </div>
