@@ -6,13 +6,15 @@ import { Box, Button } from "@mui/material";
 import muiStyles from "./styles";
 import { categories, products } from "./data";
 import Header from "app/components/header/Header";
-import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router-dom";
 import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
+import { useGetCategoriesQuery } from "./apiSlice";
 
 const Shop = () => {
   const [selectedTab, setSelectedTab] = useState("equipments");
   const navigate = useNavigate();
+
+  const { data, isLoading } = useGetCategoriesQuery({});
 
   return (
     <div className="scroll-wrapper">
@@ -54,14 +56,14 @@ const Shop = () => {
             Purchase by category
           </div>
           <div className={styles.categories}>
-            {categories.map((category) => (
+            {data?.data?.map((category) => (
               <div style={{ marginRight: 20 }}>
                 <Category
                   image={category.image}
                   size={60}
-                  label={category.label}
+                  label={category.name}
                   onSelect={() =>
-                    navigate(`/app/shop-by-category?category=${category.label}`)
+                    navigate(`/app/shop-by-category?category=${category.id}`)
                   }
                 />
               </div>

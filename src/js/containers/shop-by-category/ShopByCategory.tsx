@@ -6,10 +6,14 @@ import styles from "./styles.scss";
 import Header from "app/components/header/Header";
 import { categories, products } from "./data";
 import { useSearchParams } from "react-router-dom";
+import { useGetCategoriesQuery } from "../shop/apiSlice";
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { data, isLoading } = useGetCategoriesQuery({});
+
 
   useEffect(() => {
     const category = searchParams.get("category");
@@ -22,16 +26,16 @@ const Shop = () => {
       <Header hasSearch hasCart hasBack title="Shop by category" />
       <div className={styles.container}>
         <div className={styles.categories}>
-          {categories.map((category) => (
+          {data?.data?.map((category) => (
             <div style={{ marginRight: 20 }}>
               <Category
                 image={category.image}
                 size={50}
-                label={category.label}
-                isSelected={selectedCategory === category.label}
+                label={category.name}
+                isSelected={selectedCategory === category.id}
                 onSelect={() => {
-                  setSelectedCategory(category.label);
-                  setSearchParams({ "category": category.label });
+                  setSelectedCategory(category.id);
+                  setSearchParams({ "category": category.id });
                 }}
               />
             </div>
