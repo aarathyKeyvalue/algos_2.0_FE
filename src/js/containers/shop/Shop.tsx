@@ -9,7 +9,7 @@ import Header from "app/components/header/Header";
 import { Carousel } from "react-responsive-carousel";
 
 const Shop = () => {
-  const [selectedTab, setSelectedTab] = useState("equipements");
+  const [selectedTab, setSelectedTab] = useState("equipments");
   return (
     <div className="scroll-wrapper">
       <Header hasMenu titleCenter hasSearch title="Shop" />
@@ -20,11 +20,11 @@ const Shop = () => {
             disableElevation
             sx={[
               muiStyles.button,
-              selectedTab === "equipements"
+              selectedTab === "equipments"
                 ? muiStyles.primary
                 : muiStyles.secondary,
             ]}
-            onClick={() => setSelectedTab("equipements")}
+            onClick={() => setSelectedTab("equipments")}
           >
             Equipments
           </Button>

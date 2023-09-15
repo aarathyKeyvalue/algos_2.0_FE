@@ -1,0 +1,101 @@
+.siteItemContainer {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    .titleContainer {
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #1D1D1D;
+        line-height: 18px;
+      }
+      .subTitle {
+        color: #00000070;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 20px;
+      }
+    }
+    .goTo {
+      height: 24px;
+      width: 24px;
+    }
+  }
+  .sections {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    .section {
+      width: calc((100% - 17px)/2);
+      .each {
+        border-radius: 10px;
+        height: 57px;
+        padding: 7px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        .detailsHeader {
+          font-size: 13px;
+          color: #1D1D1D;
+          letter-spacing: -0.13px;
+        }
+        .detailsValue {
+          font-size: 20px;
+          font-weight: 500;
+          letter-spacing: -0.2px;
+        }
+      }
+      .plants {
+        border: 1px solid #E6FFDB;
+        background: rgba(247, 255, 243, 0.50);
+        .detailsValue {
+          color: #1D5503;
+        }
+      }
+      .temperature {
+        border: 1px solid #FDFDDD;
+        background: rgba(255, 255, 235, 0.60);
+        .detailsValue {
+          color: #EEAD05;
+        }
+      }
+      .waterLevel {
+        border: 1px solid #E3FAFF;
+        background: rgba(250, 254, 255, 0.70);
+        .detailsValue {
+          font-weight: 600;
+          color: #0067A1;
+        }
+      }
+      .water {
+        border: 1px solid #DDFFFC;
+        background: rgba(244, 255, 254, 0.60);
+        .detailsValue {
+          font-weight: 600;
+          color: #007787;
+        }
+      }
+      .image {
+        width: 48px;
+        height: 48px;
+      }
+      .tiltedImage {
+        height: 48px;
+        width: 48px;
+        transform: rotate(-15deg);
+      }
+    }
+  }
+}
