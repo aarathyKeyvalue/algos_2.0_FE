@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import BasicRating from 'app/components/BasicRating/BasicRating';
-import PriceView from 'app/components/header/PriceView/PriceView';
+import PriceView from 'app/components/PriceView/PriceView';
 
 const ProductDetails = () => {
   const navigate = useNavigate();
