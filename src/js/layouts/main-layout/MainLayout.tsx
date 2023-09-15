@@ -10,6 +10,7 @@ import Shop from "app/containers/shop/Shop";
 import styles from "./styles.scss";
 import HomeLayout from "./HomeLayout";
 import Header from "app/components/header/Header";
+import ProductDetails from 'app/containers/product-details/ProductDetails';
 
 const MainLayout: FC<object> = () => {
   return (
@@ -21,6 +22,7 @@ const MainLayout: FC<object> = () => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomeLayout />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product-details" element={<ProductDetails />} />
         </Routes>
       </Router>
     </div>
