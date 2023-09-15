@@ -7,11 +7,19 @@ import { Action_Buttons, Action_Types } from "./constants";
 const PostComponent = ({ post }: { post?: any }) => {
   const postContent = useRef(null);
   const [showReadMore, setShowReadMore] = useState(false);
+  const [isTextExpanded, setIsTextExpanded] = useState(false);
 
   useEffect(() => {
     if (postContent.current) {
       const postElem = postContent.current as HTMLDivElement;
-      setShowReadMore(true);
+      if (postElem.offsetHeight > 54) {
+        setShowReadMore(true);
+      } else {
+        const postParentElem = document.getElementById("text-wrapper");
+        if (postParentElem) {
+          postParentElem.style.height = "fit-content";
+        }
+      }
     }
   }, [postContent.current]);
 
@@ -48,6 +56,19 @@ const PostComponent = ({ post }: { post?: any }) => {
     return null;
   };
 
+  const toggleReadMore = () => {
+    const postParentElem = document.getElementById("text-wrapper");
+    if (postParentElem) {
+      if (isTextExpanded) {
+        postParentElem.style.height = "50px";
+        setIsTextExpanded(false);
+      } else {
+        postParentElem.style.height = "auto";
+        setIsTextExpanded(true);
+      }
+    }
+  };
+
   return (
     <div className={styles.postContainer}>
       <div className={styles.avatar}>
@@ -58,12 +79,20 @@ const PostComponent = ({ post }: { post?: any }) => {
         />
       </div>
       <div className={styles.textContainer}>
-        <div className={styles.textWrapper}>
+        <div className={styles.textWrapper} id="text-wrapper">
           <div className={styles.text} ref={postContent}>
             {post.content}
           </div>
         </div>
-        {showReadMore && <div className={styles.readMore}>Read More...</div>}
+        {showReadMore && (
+          <div
+            className={styles.readMore}
+            onClick={toggleReadMore}
+            role="presentation"
+          >
+            {isTextExpanded ? "Read Less" : "Read More..."}
+          </div>
+        )}
       </div>
       {post.images.length > 0 && (
         <div className={styles.imageContainer}>

@@ -7,6 +7,13 @@ import Header from "app/components/header/Header";
 const Community = () => {
   return (
     <div className={styles.communityContainer}>
+      <Header
+        titleCenter
+        hasSearch
+        hasMenu
+        title={<div className={styles.header}>Community</div>}
+      />
+
       <div className={styles.optionsContainer}>Options</div>
       <div className={styles.posts}>
         {dummyPosts.map((post) => (
