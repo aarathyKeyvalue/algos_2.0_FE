@@ -9,11 +9,29 @@ body,
   padding: 0;
   overflow: hidden;
 }
-
+@keyframes animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 body {
   font-family: "Rubik", serif;
+  position: relative;
 }
-
+.MuiBackdrop-root {
+  max-width: 450px;
+  background-color: transparent !important;
+}
+.MuiPaper-root, .MuiBackdrop-root {
+  position: absolute !important;
+  left: calc((100% - 450px)/2) !important;
+}
+.MuiPaper-root {
+  animation: animation 0.2s linear 0s 1 forwards;
+}
 * {
   box-sizing: border-box;
 }
