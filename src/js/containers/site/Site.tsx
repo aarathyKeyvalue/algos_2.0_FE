@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Header from "app/components/header/Header";
 import Item from "app/components/item/Item";
@@ -11,8 +12,11 @@ import { CROP_TYPES, crops } from "./constants";
 import styles from './styles.scss';
 
 const Site = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const getCropType = (crop) => CROP_TYPES.find((each) => each.type === crop.type);
   const [showAllCrops, toggleShowAll] = useState<boolean>(false);
+  const goToPlants = () => navigate(`/site/${id}/plants`);
   return (
     <div className={styles.siteContainer}>
       <Header
@@ -28,7 +32,7 @@ const Site = () => {
       <div className={styles.content}>
         <Item type="plants" style={styles.plants}>
           <>
-            <div className={styles.plantsHeader}>
+            <div className={styles.plantsHeader} onClick={goToPlants}>
               <span><span className={styles.count}>7</span>
               <span className={styles.capacity}>/10</span></span>
               <span className={styles.sub}> Plants</span>
@@ -123,7 +127,7 @@ const Site = () => {
             <>
             <div className={styles.details}>
               <div className={styles.eachDetail}>
-                <div className={styles.header}>pH Level</div>
+                <div className={styles.header}>pH Level</div> 
               </div>
               <div className={styles.eachDetail}>
                 <div className={`${styles.mainValue} ${styles.lightValue}`}>5.2</div>
@@ -140,11 +144,11 @@ const Site = () => {
               </div>
             </>
           </Item>
-          <Item type="humidity" style={styles.temp}>
+          <Item type="water" style={styles.temp}>
             <>
             <div className={styles.details}>
               <div className={styles.eachDetail}>
-                <div className={styles.header}>Temperature</div>
+                <div className={styles.header}>Humidity</div>
               </div>
               <div className={styles.eachDetail}>
                 <div className={`${styles.mainValue} ${styles.phValue}`}>83%</div>

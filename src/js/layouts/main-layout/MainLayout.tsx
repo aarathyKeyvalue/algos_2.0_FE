@@ -15,18 +15,24 @@ import ProductDetails from "app/containers/product-details/ProductDetails";
 import ViewInRoom from "app/containers/view-in-room/ViewInRoom";
 import AppLayout from "./AppLayout";
 import Garden from "app/containers/garden/Garden";
+import CreatePost from "app/containers/create-post/CreatePost";
 import Site from "app/containers/site/Site";
 import CartLayout from "app/containers/cart-layout/CartLayout";
+import Plants from "app/containers/plants/Plants";
+import Subscribtion from "app/containers/subscribtion/Subscribtion";
+import Profile from "app/containers/profile/Profile";
 
 const MainLayout: FC<object> = () => {
   return (
     <div className={styles.mainLayoutWrapper}>
       <Router>
         <Routes>
-          <Route path="" element={<Navigate to="/splash" />} />
+          <Route path="" element={<Navigate to="/splash" replace />} />
           <Route path="/splash" element={<SplashScreen />} />
+          <Route path="/subscribtion" element={<Subscribtion />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/app" element={<AppLayout />}>
-            <Route path="/app" element={<Navigate to="/app/home" />} />
+            <Route path="/app" element={<Navigate to="/app/home" replace />} />
             <Route path="/app/shop" element={<Shop />} />
             <Route path="/app/shop-by-category" element={<ShopByCategory />} />
             <Route path="/app/garden" element={<Garden />} />
@@ -35,8 +41,10 @@ const MainLayout: FC<object> = () => {
             <Route path="/app/cart" element={<CartLayout />} />
           </Route>
           <Route path="/site/:id" element={<Site />} />
+          <Route path="/site/:id/plants" element={<Plants />} />
           <Route path="/product-details" element={<ProductDetails />} />
           <Route path="/view-in-room" element={<ViewInRoom />} />
+          <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </Router>
     </div>
