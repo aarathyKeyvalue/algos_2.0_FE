@@ -40,10 +40,10 @@ const ProductCard: FC<ProductCardType> = (props) => {
             }}
           >
             <Typography sx={{ fontSize: 12 }} color="#1D1D1D66">
-              {product?.name}
+              {product?.manufacture}
             </Typography>
             <Typography sx={{ fontSize: 16 }} color="#1D1D1D">
-              {product?.manufacture}
+              {product?.name}
             </Typography>
             <BasicRating
               starCount={product?.starRating}
