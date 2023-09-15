@@ -96,7 +96,12 @@ const Shop = () => {
         <div className={styles.categories}>
           {products.map((product) => (
             <div style={{ marginRight: 18 }}>
-              <ProductCard image={product.image} name="pH Down Solution" />
+              <ProductCard
+                image={product.image}
+                name={product.name}
+                offerPrize={product.offerPrize}
+                prize={product.prize}
+              />
             </div>
           ))}
         </div>
@@ -116,7 +121,12 @@ const Shop = () => {
         <div className={styles.categories}>
           {products.map((product) => (
             <div style={{ marginRight: 18 }}>
-              <ProductCard image={product.image} name="pH Down Solution" />
+              <ProductCard
+                image={product.image}
+                name={product.name}
+                offerPrize={product.offerPrize}
+                prize={product.prize}
+              />
             </div>
           ))}
         </div>

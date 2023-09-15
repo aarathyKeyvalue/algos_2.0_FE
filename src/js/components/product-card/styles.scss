@@ -10,7 +10,7 @@
     border-radius: 10px;
 }
 
-.content {
+.name {
     font-size: 14px;
     color: #1d1d1d;
     margin-top: 8px;
@@ -19,4 +19,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 4px;
+}
+
+.currentPriceCustom {
+    font-size: 14px !important;
+}
+
+.actualPriceCustom {
+    font-size: 12px !important;
 }
