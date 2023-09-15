@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import Sidebar from "../sidebar/Sidebar";
+
 import styles from './styles.scss';
 
 const Header = (props) => {
@@ -20,9 +22,9 @@ const Header = (props) => {
   return (
     <div className={styles.headerContainer}>
       {hasMenu && (
-        <div className={styles.headerMenu}>
-          <img src="assets/svg/header/menu.svg" />
-        </div>
+          <div className={styles.headerMenu} >
+           <Sidebar/>
+          </div>
       )}
       {hasBack && (
         <div className={styles.headerBack} onClick={() => navigate(-1)}>

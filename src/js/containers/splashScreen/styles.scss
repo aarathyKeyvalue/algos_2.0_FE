@@ -12,9 +12,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   .image {
     height: 156px;
     width: 159px;
     animation: animate 1s linear 0s 1 forwards;
+  }
+  .signIn {
+    animation: animate 0.5s linear 0s 1 forwards;
+    position: absolute;
+    width: 100%;
+    bottom: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    img {
+      margin:  0 32px;
+    }
   }
 }
