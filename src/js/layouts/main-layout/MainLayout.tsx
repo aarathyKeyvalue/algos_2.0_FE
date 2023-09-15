@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Shop from "app/containers/shop/Shop";
+import Home from "app/containers/home/Home";
 import styles from "./styles.scss";
 import Community from "app/containers/community/Community";
 import ShopByCategory from "app/containers/shop-by-category/ShopByCategory";
@@ -31,6 +32,7 @@ const MainLayout: FC<object> = () => {
             <Route path="/app/shop-by-category" element={<ShopByCategory />} />
             <Route path="/app/garden" element={<Garden />} />
             <Route path="/app/community" element={<Community />} />
+            <Route path="/app/home" element={<Home />} />
           </Route>
           <Route path="/site/:id" element={<Site />} />
           <Route path="/product-details" element={<ProductDetails />} />
