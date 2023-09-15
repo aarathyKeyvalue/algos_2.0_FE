@@ -5,7 +5,7 @@ import ProductCard from "app/components/ProductCard/ProductCard";
 import styles from "./styles.scss";
 import Header from "app/components/header/Header";
 import { categories, products } from "./data";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   useGetCategoriesQuery,
   useLazyGetProductsQuery,
@@ -15,6 +15,8 @@ import Loader from "app/components/loader";
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
 
   const { data, isLoading } = useGetCategoriesQuery({});
   const [getProducts, { data: productsData, isLoading: isProductsLoading }] =
@@ -27,13 +29,17 @@ const Shop = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedCategory) getProducts([selectedCategory]);
+    if (selectedCategory) {
+      getProducts([selectedCategory]);
+    }
   }, [selectedCategory]);
 
   const randomIntFromInterval = (min, max) => {
     // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
+
+  console.log(productsData);
 
   return (
     <div className="scroll-wrapper">
@@ -50,12 +56,20 @@ const Shop = () => {
                 isSelected={selectedCategory === category.id}
                 onSelect={() => {
                   setSelectedCategory(category.id);
-                  setSearchParams({ category: category.id });
+                  navigate(`/app/shop-by-category?category=${category.id}`, {
+                    replace: true,
+                  });
                 }}
               />
             </div>
           ))}
         </div>
+        {productsData?.data?.length === 0 && (
+          <div style={{ width: "100%", textAlign: "center", marginTop: 100 }}>
+            No products in this category
+          </div>
+        )}
+
         <div style={{ height: "calc(100vh - 280px)", overflowY: "auto" }}>
           {productsData?.data?.map((product) => (
             <ProductCard

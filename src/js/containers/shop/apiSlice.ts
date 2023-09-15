@@ -9,7 +9,7 @@ const shopeApis = baseApi.injectEndpoints({
     }),
     getProducts: builder.query({
       query: (categories) => ({
-        url: `/products?categoryIds=[${categories}]`
+        url: categories ? `/products?categoryIds=${JSON.stringify(categories)}` : `/products`
       }),
     }),
   }),
