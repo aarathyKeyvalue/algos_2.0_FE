@@ -11,9 +11,10 @@ import Footer from "app/components/footer/Footer";
 import FooterMenu from "app/components/footerMenu/FooterMenu";
 
 import styles from './styles.scss';
+import ProductDetails from 'app/containers/product-details/ProductDetails';
 import HomeLayout from './HomeLayout';
 
-const MainLayout:FC<object> = () => {
+const MainLayout: FC<object> = () => {
   return (
     <div className={styles.mainLayoutWrapper}>
       <Router>
@@ -22,6 +23,7 @@ const MainLayout:FC<object> = () => {
           <Route path="/splash" element={<SplashScreen />} />
           <Route path="/home" element={<HomeLayout />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product-details" element={<ProductDetails />} />
         </Routes>
       </Router>
       <Footer>
