@@ -5,7 +5,6 @@ const styles = {
     textTransform: "none",
     fontWeight: "bold",
     width: "50%",
- 
   },
   primary: {
     backgroundColor: "#1D2917",
@@ -20,6 +19,9 @@ const styles = {
     "&:hover": {
       backgroundColor: "#fff",
     },
+  },
+  postButton: {
+    width: "78px",
   },
 };
 
