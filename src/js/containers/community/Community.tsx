@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.scss";
 import PostComponent from "app/components/post-component/PostComponent";
 import { dummyPosts } from "app/components/post-component/constants";
@@ -13,6 +13,19 @@ const Community = () => {
   const handleTabSelection = (tab) => {
     setSelectedTab(tab);
   };
+  useEffect(() => {
+    const chatBotElement = document.getElementById('chat-bot');
+    if (chatBotElement) {
+      chatBotElement.style.display = 'none';
+    }
+    return ()=>{
+      if (chatBotElement) {
+        chatBotElement.style.display = 'block';
+      }
+    }
+  }, []); 
+
+
   return (
     <div className={styles.communityContainer}>
       <Header
