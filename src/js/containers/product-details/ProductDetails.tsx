@@ -32,6 +32,10 @@ const ProductDetails = () => {
         <div className={styles.productViewer}>
           <Carousel
             showThumbs={false}
+            emulateTouch
+            autoPlay
+            infiniteLoop
+            stopOnHover
           >
             <div className={styles.productImageCard}>
               <img
