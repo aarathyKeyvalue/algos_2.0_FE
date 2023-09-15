@@ -3,11 +3,13 @@ import styles from "./styles.scss";
 import CustomAvatar from "../avatar/Avatar";
 import CustomImageList from "../image-list/ImageList";
 import { Action_Buttons, Action_Types } from "./constants";
+import { ImageListItem, Modal } from "@mui/material";
 
 const PostComponent = ({ post }: { post?: any }) => {
   const postContent = useRef(null);
   const [showReadMore, setShowReadMore] = useState(false);
   const [isTextExpanded, setIsTextExpanded] = useState(false);
+  const [openImageUrl, setOpenImageUrl] = useState<any>(null);
 
   useEffect(() => {
     if (postContent.current) {
@@ -73,9 +75,9 @@ const PostComponent = ({ post }: { post?: any }) => {
     <div className={styles.postContainer}>
       <div className={styles.avatar}>
         <CustomAvatar
-          src={post.author.avatar}
-          name={post.author.name}
-          description={post.author.place}
+          src={post?.author?.src}
+          name={post?.author?.name}
+          description={post?.author?.place}
         />
       </div>
       <div className={styles.textContainer}>
@@ -96,7 +98,11 @@ const PostComponent = ({ post }: { post?: any }) => {
       </div>
       {post.images.length > 0 && (
         <div className={styles.imageContainer}>
-          <CustomImageList imageList={post.images} />
+          <CustomImageList
+            imageList={post.images}
+            onImageClick={(image) => setOpenImageUrl(image?.src)}
+
+          />
         </div>
       )}
       <div className={styles.actionsContainer}>
@@ -126,6 +132,32 @@ const PostComponent = ({ post }: { post?: any }) => {
           </div>
         </div>
       </div>
+      <Modal
+        open={openImageUrl}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <div className={styles.imageViewModal}>
+          <div className={styles.imageViewHeader}>
+            <img
+              src="assets/svg/close-icon-black.svg"
+              alt=""
+              style={{ cursor: 'pointer' }}
+              onClick={() => setOpenImageUrl(null)}
+            />
+          </div>
+          <div className={styles.imageViewBody}>
+            <img
+              src={openImageUrl}
+              className={styles.image}
+              alt=""
+            />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
