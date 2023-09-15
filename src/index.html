@@ -27,11 +27,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
     <title>Hydro Futura</title>
   </head>
+  <style>
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      bottom: 108px;
+      right: calc((100% - 450px)/2 + 16px);
+    }
+  </style>
   <body style=display:flex;justify-content:center;background-color:#F5F5F5;height:100%>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="portal"></div>
+    <df-messenger
+    id="chat-bot"
+  project-id="noble-hangar-398810"
+  agent-id="d53a43c7-62c5-4779-8484-8cb1bc2214bc"
+  language-code="en">
+  <df-messenger-chat-bubble
+   chat-title="ub buddy"
+   >
+   >
+  </df-messenger-chat-bubble>
+</df-messenger>
     <div id="root" style=max-width:450px;width:100%></div>
     <!--
       This HTML file is a template.
