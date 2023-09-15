@@ -6,6 +6,7 @@ const FooterMenu = (props) => {
   const {onMenuClick  = () => {}} = props;
 
   const [activeMenu, setActiveMenu] = useState<string>('')
+  const [hoverMenu, setHoverMenu] = useState<string>('');
 
   const onClick = (id) => {
     setActiveMenu(id);
@@ -17,8 +18,10 @@ const FooterMenu = (props) => {
         <div
           className={`${styles.eachItem} ${activeMenu === footer.id && styles.active}`}
           onClick={() => onClick(footer.id)}
+          onMouseOver={() => setHoverMenu(footer.id)}
+          onMouseOut={() => setHoverMenu('')}
         >
-          <img src={footer.inactiveIcon} />
+          <img src={(activeMenu === footer.id || hoverMenu === footer.id )&& footer.activeIcon || footer.inactiveIcon} />
           <div>{footer.name}</div>
         </div>
       ))}
