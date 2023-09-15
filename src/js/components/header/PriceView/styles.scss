@@ -1,0 +1,14 @@
+.priceContainer {
+  display: flex;
+  align-items: center;
+  column-gap:5px ;
+  .currentPrice {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .actualPrice {
+    font-size: 13px;
+    text-decoration: line-through;
+    color: rgba(29, 29, 29, 0.40);;
+  }
+}
