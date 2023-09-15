@@ -6,14 +6,19 @@ import styles from "./styles.scss";
 import Header from "app/components/header/Header";
 import { categories, products } from "./data";
 import { useSearchParams } from "react-router-dom";
-import { useGetCategoriesQuery } from "../shop/apiSlice";
+import {
+  useGetCategoriesQuery,
+  useLazyGetProductsQuery,
+} from "../shop/apiSlice";
+import Loader from "app/components/loader";
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { data, isLoading } = useGetCategoriesQuery({});
-
+  const [getProducts, { data: productsData, isLoading: isProductsLoading }] =
+    useLazyGetProductsQuery({});
 
   useEffect(() => {
     const category = searchParams.get("category");
@@ -21,8 +26,18 @@ const Shop = () => {
     setSelectedCategory(`${category}`);
   }, []);
 
+  useEffect(() => {
+    if (selectedCategory) getProducts([selectedCategory]);
+  }, [selectedCategory]);
+
+  const randomIntFromInterval = (min, max) => {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
   return (
     <div className="scroll-wrapper">
+      <Loader isLoading={isLoading || isProductsLoading} />
       <Header hasSearch hasCart hasBack title="Shop by category" />
       <div className={styles.container}>
         <div className={styles.categories}>
@@ -35,22 +50,22 @@ const Shop = () => {
                 isSelected={selectedCategory === category.id}
                 onSelect={() => {
                   setSelectedCategory(category.id);
-                  setSearchParams({ "category": category.id });
+                  setSearchParams({ category: category.id });
                 }}
               />
             </div>
           ))}
         </div>
         <div style={{ height: "calc(100vh - 280px)", overflowY: "auto" }}>
-          {products.map((product) => (
+          {productsData?.data?.map((product) => (
             <ProductCard
               product={{
-                name: "The Tashi Junior",
+                name: product.name,
                 manufacture: "TASHI",
-                starRating: 3,
-                totalReviews: 20,
-                currentPrice: "599.00",
-                actualPrice: "799.00",
+                starRating: randomIntFromInterval(1, 5),
+                totalReviews: randomIntFromInterval(10, 90),
+                currentPrice: product.price * 0.9,
+                actualPrice: product.price,
               }}
             />
           ))}
