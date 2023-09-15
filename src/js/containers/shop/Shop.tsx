@@ -7,9 +7,12 @@ import muiStyles from "./styles";
 import { categories, products } from "./data";
 import Header from "app/components/header/Header";
 import { Carousel } from "react-responsive-carousel";
+import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
   const [selectedTab, setSelectedTab] = useState("equipements");
+  const navigate = useNavigate();
+
   return (
     <div className="scroll-wrapper">
       <Header hasMenu titleCenter hasSearch title="Shop" />
@@ -75,6 +78,7 @@ const Shop = () => {
                   image={category.image}
                   size={60}
                   label={category.label}
+                  onSelect={() => navigate(`/app/shop-by-category?category=${category.label}`)}
                 />
               </div>
             ))}
