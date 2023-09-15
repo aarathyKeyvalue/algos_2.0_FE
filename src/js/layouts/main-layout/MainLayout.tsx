@@ -13,6 +13,8 @@ import FooterMenu from "app/components/footerMenu/FooterMenu";
 import styles from './styles.scss';
 import ProductDetails from 'app/containers/product-details/ProductDetails';
 import HomeLayout from './HomeLayout';
+import AppLayout from './AppLayout';
+import Garden from 'app/containers/garden/Garden';
 
 const MainLayout: FC<object> = () => {
   return (
@@ -21,14 +23,15 @@ const MainLayout: FC<object> = () => {
         <Routes>
           <Route path="" element={<Navigate to="/splash" />} />
           <Route path="/splash" element={<SplashScreen />} />
-          <Route path="/home" element={<HomeLayout />} />
-          <Route path="/shop" element={<Shop />} />
+          <Route path="/app" element={<AppLayout />}>
+            <Route path="/app" element={<Navigate to="/app/home" />} />
+            <Route path="/app/home" element={<HomeLayout />} />
+            <Route path="/app/shop" element={<Shop />} />
+            <Route path="/app/garden" element={<Garden />} />
+          </Route>
           <Route path="/product-details" element={<ProductDetails />} />
         </Routes>
       </Router>
-      <Footer>
-        <FooterMenu />
-      </Footer>
     </div>
   );
 };
