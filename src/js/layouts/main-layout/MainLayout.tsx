@@ -10,6 +10,7 @@ import Shop from 'app/containers/shop/Shop';
 import styles from './styles.scss';
 import ProductDetails from 'app/containers/product-details/ProductDetails';
 import HomeLayout from './HomeLayout';
+import ViewInRoom from 'app/containers/view-in-room/ViewInRoom';
 
 const MainLayout: FC<object> = () => {
   return (
@@ -21,6 +22,8 @@ const MainLayout: FC<object> = () => {
           <Route path="/home" element={<HomeLayout />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product-details" element={<ProductDetails />} />
+          <Route path="/view-in-room" element={<ViewInRoom />} />
+
         </Routes>
       </Router>
     </div>

@@ -2,8 +2,10 @@ import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import styles from './styles.scss';
+import { useNavigate } from 'react-router-dom';
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles.header}>
@@ -20,9 +22,14 @@ const ProductDetails = () => {
                 src="assets/svg/product-image-1.svg"
               />
               <div className={styles.viewProductButtonContainer}>
-                <div className={styles.viewProductButton}>
+                <div
+                  className={styles.viewProductButton}
+                  onClick={() => {
+                    navigate('/view-in-room')
+                  }}
+                >
                   <img src="assets/svg/view-product-icon.svg" alt="" />
-                  View product
+                  View in your room
                 </div>
               </div>
             </div>
