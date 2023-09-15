@@ -8,15 +8,14 @@ import { categories, products } from "./data";
 import { useSearchParams } from "react-router-dom";
 
 const Shop = () => {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [searchParams] = useSearchParams();
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const category = searchParams.get('category');
+    const category = searchParams.get("category");
 
     setSelectedCategory(`${category}`);
   }, []);
-
 
   return (
     <div className="scroll-wrapper">
@@ -30,7 +29,10 @@ const Shop = () => {
                 size={50}
                 label={category.label}
                 isSelected={selectedCategory === category.label}
-                onSelect={() => setSelectedCategory(category.label)}
+                onSelect={() => {
+                  setSelectedCategory(category.label);
+                  setSearchParams({ "category": category.label });
+                }}
               />
             </div>
           ))}
