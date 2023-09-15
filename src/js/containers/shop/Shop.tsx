@@ -10,7 +10,7 @@ import { Carousel } from "react-responsive-carousel";
 
 const Shop = () => {
   return (
-    <div>
+    <div className="scroll-wrapper">
       <Header hasMenu titleCenter hasSearch title="Shop" />
       <div className={styles.container}>
         <div className={styles.mainTab}>
