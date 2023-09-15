@@ -1,0 +1,15 @@
+.gardenContainer {
+  width: 100%;
+  height: 100%;
+  .buttonGroup {
+    padding: 22px 16px;
+    display: flex;
+    gap: 17px;
+    width: 100%;
+    .eachButton {
+      width: calc((100% - 34px)/3);
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
