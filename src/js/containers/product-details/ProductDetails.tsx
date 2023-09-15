@@ -2,13 +2,32 @@ import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import styles from './styles.scss';
+import { useNavigate } from 'react-router-dom';
+import Header from 'app/components/header/Header';
+
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
+import BasicRating from 'app/components/BasicRating/BasicRating';
+import PriceView from 'app/components/PriceView/PriceView';
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
+  const product = {
+    name: 'TASHI',
+    manufacture: 'The Tashi Junior',
+    starRating: 3,
+    totalReviews: '20',
+    currentPrice: '599.00',
+    actualPrice: '799.00'
+  }
+
   return (
     <>
-      <div className={styles.header}>
-        Header
-      </div>
+      <Header
+        hasBack
+        hasCart
+      />
       <div className={styles.productDetailsWrapper}>
         <div className={styles.productViewer}>
           <Carousel
@@ -20,9 +39,14 @@ const ProductDetails = () => {
                 src="assets/svg/product-image-1.svg"
               />
               <div className={styles.viewProductButtonContainer}>
-                <div className={styles.viewProductButton}>
+                <div
+                  className={styles.viewProductButton}
+                  onClick={() => {
+                    navigate('/view-in-room')
+                  }}
+                >
                   <img src="assets/svg/view-product-icon.svg" alt="" />
-                  View product
+                  View in your room
                 </div>
               </div>
             </div>
@@ -41,7 +65,31 @@ const ProductDetails = () => {
           </Carousel>
         </div>
         <div className={styles.productBasicDetails}>
-          The Tashi Pro
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+          >
+            <Typography sx={{ fontSize: 12 }} color="#1D1D1D66">
+              {product?.name}
+            </Typography>
+            <Typography sx={{ fontSize: 16 }} color="#1D1D1D">
+              {product?.manufacture}
+            </Typography>
+            <BasicRating
+              starCount={product?.starRating}
+              totalReviewCount={product?.totalReviews}
+              isReadOnly
+              showRatingCountFullText
+            />
+            <PriceView
+              currentPriceCustomClass={styles.currentPrice}
+              actualPriceCustomClass={styles.actualPrice}
+              actualPrice={product?.actualPrice}
+              currentPrice={product?.currentPrice}
+            />
+          </Box>
         </div>
         <div className={styles.producDescContainer}>
           <div className={styles.productDescSubHeader}>
