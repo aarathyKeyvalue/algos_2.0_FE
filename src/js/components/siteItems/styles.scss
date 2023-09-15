@@ -1,0 +1,16 @@
+.content {
+  padding: 0 16px 22px 16px;
+  background-color: #FFF;
+  height: calc(100% - 44px);
+  overflow-y: auto;
+  .eachContent:not(:last-child)::after {
+    content: ' ';
+    width: calc(100% - 18px);
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #EFEFEF;
+  }
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
+}

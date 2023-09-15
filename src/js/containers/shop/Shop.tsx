@@ -10,7 +10,7 @@ import { Carousel } from "react-responsive-carousel";
 import { useNavigate } from "react-router-dom";
 
 const Shop = () => {
-  const [selectedTab, setSelectedTab] = useState("equipements");
+  const [selectedTab, setSelectedTab] = useState("equipments");
   const navigate = useNavigate();
 
   return (
@@ -23,11 +23,11 @@ const Shop = () => {
             disableElevation
             sx={[
               muiStyles.button,
-              selectedTab === "equipements"
+              selectedTab === "equipments"
                 ? muiStyles.primary
                 : muiStyles.secondary,
             ]}
-            onClick={() => setSelectedTab("equipements")}
+            onClick={() => setSelectedTab("equipments")}
           >
             Equipments
           </Button>
