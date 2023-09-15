@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import Login from 'app/containers/login/Login';
+import Shop from 'app/containers/shop/Shop';
 
 import styles from './styles.scss';
 
@@ -19,6 +20,7 @@ const MainLayout:FC<object> = () => {
           <Route path="" element={<Navigate to="/login" />} />
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/shop" element={<Shop />} />
         </Routes>
       </Router>
     </div>
