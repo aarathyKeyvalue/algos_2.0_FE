@@ -1,6 +1,7 @@
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
-  font-family: 'DM Sans','Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -8,12 +9,54 @@ html, body, #root {
   padding: 0;
   overflow: hidden;
 }
-
+@keyframes animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body {
+  font-family: "Rubik", serif;
+  position: relative;
+}
+.MuiBackdrop-root {
+  max-width: 450px;
+  background-color: transparent !important;
+}
+.MuiPaper-root, .MuiBackdrop-root {
+  position: absolute !important;
+  left: calc((100% - 475px)/2) !important;
+}
+.MuiPaper-root {
+  animation: animation 0.2s linear 0s 1 forwards;
+}
+.loader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 * {
   box-sizing: border-box;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.carousel .control-dots .dot {
+  box-shadow: none !important;
+}
+
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+ 
+html {
+  scroll-behavior: smooth;
+}
+

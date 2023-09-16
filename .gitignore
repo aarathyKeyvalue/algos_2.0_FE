@@ -12,6 +12,16 @@
 # production
 /build
 
+# vr-demo project
+
+/aquaponics/.DS_Store
+/aquaponics/*~
+/aquaponics/*.log
+/aquaponics/*.js.meta
+/aquaponics/node_modules/
+/aquaponics/build/
+
+
 # misc
 .DS_Store
 .env.local

@@ -1,0 +1,142 @@
+.cartLayoutBody {
+  padding-top: 24px;
+  height: calc(100% - 250px);
+  .mainTab {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 6px 16px 20px;
+  }
+  .addressContainer {
+    padding: 0 16px;
+    .addressValueContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .namePin {
+        color: rgba(29, 29, 29, 0.94);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+      }
+      .rest {
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: rgba(29, 29, 29, 0.94);
+        text-overflow: ellipsis;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .cartItemsList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1px solid#efefef;
+    margin-top: 22px;
+    .cartItemContainer {
+      width: 100%;
+    }
+  }
+  .boldText {
+    color: #1d1d1d;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .priceBreakDownContainer {
+    padding: 22px 16px 0;
+    .summaryList {
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+      margin-top: 14px;
+      .summaryItem {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        .left {
+          color: rgba(29, 29, 29, 0.94);
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px; /* 142.857% */
+        }
+        .right {
+          color: rgba(29, 29, 29, 0.94);
+          text-align: right;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 20px; /* 142.857% */
+        }
+        .greenText {
+          color: #2d8304;
+        }
+        .greyText {
+          color: #a5a5a5;
+        }
+      }
+    }
+  }
+
+  .emptyCart {
+    color: #00000070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .checkoutFooter {
+    position: absolute;
+    bottom: 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    background: #fff;
+    box-shadow: 0px -4px 17px 0px rgba(0, 0, 0, 0.05);
+    padding: 0 18px;
+    z-index: 1;
+    .left {
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+      .totalDiscountPrice {
+        font-size: 12px;
+        color: #a5a5a5;
+      }
+      .totalPrice {
+        font-size: 22px;
+        color: rgba(29, 29, 29, 0.94);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px; /* 90.909% */
+      }
+    }
+  }
+}
+
+.cartLayoutWrapper {
+  height: 100%;
+  .success {
+    position: absolute;
+    bottom: 150px;
+    right: 20px;
+    font-size: 20px;
+    color: #2D8304;
+    background-color: #2D830440;
+    padding:  6px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

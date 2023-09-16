@@ -1,0 +1,23 @@
+.quantityContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin-left: 5px;
+  .qtyChangeButton {
+    padding: 5px;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.container {
+  &:global(.MuiPaper-root) {
+    position: relative !important;
+    left: 0 !important
+  }
+  &:global(.MuiBackdrop-root) {
+    position: relative !important;
+    left: 0 !important
+  }
+}
