@@ -4,12 +4,25 @@ import CustomAvatar from "../avatar/Avatar";
 import CustomImageList from "../image-list/ImageList";
 import { Action_Buttons, Action_Types } from "./constants";
 import { ImageListItem, Modal } from "@mui/material";
+import {
+  useCreatePostMutation,
+  useLikePostMutation,
+  useUnlikePostMutation,
+} from "app/containers/shop/apiSlice";
+import Input from "../input/Input";
+import CreatePost from "app/containers/create-post/CreatePost";
 
 const PostComponent = ({ post }: { post?: any }) => {
   const postContent = useRef(null);
   const [showReadMore, setShowReadMore] = useState(false);
   const [isTextExpanded, setIsTextExpanded] = useState(false);
   const [openImageUrl, setOpenImageUrl] = useState<any>(null);
+  const [comment, setComment] = useState("");
+  const [showCommentInput, setShowCommentInput] = useState(false);
+
+  const [likePostquery] = useLikePostMutation();
+  const [unlikePostquery] = useUnlikePostMutation();
+  const [createPostQuery] = useCreatePostMutation();
 
   useEffect(() => {
     if (postContent.current) {
@@ -43,11 +56,16 @@ const PostComponent = ({ post }: { post?: any }) => {
   };
 
   const toggleLike = () => {
+    if (showReadMore) {
+      unlikePostquery({ postId: post.id, userId: "" });
+    } else {
+      likePostquery({ postId: post.id, userId: "" });
+    }
     return null;
   };
 
   const handleComment = () => {
-    return null;
+    setShowCommentInput(true);
   };
 
   const handleShare = () => {
@@ -96,12 +114,11 @@ const PostComponent = ({ post }: { post?: any }) => {
           </div>
         )}
       </div>
-      {post.images.length > 0 && (
+      {post.images && post.images.length > 0 && (
         <div className={styles.imageContainer}>
           <CustomImageList
             imageList={post.images}
             onImageClick={(image) => setOpenImageUrl(image?.src)}
-
           />
         </div>
       )}
@@ -119,25 +136,29 @@ const PostComponent = ({ post }: { post?: any }) => {
         <div className={styles.separator}>
           <img src={"assets/svg/community/dotSeparator"} alt="" />
         </div>
-        <div className={styles.repliesText}>21 Replies</div>
+        {post?.comments?.length > 0 && (
+          <div className={styles.repliesText}>
+            {`${post.comments.length} Repl${
+              post.comments.length === 1 ? "y" : "ies"
+            }`}
+          </div>
+        )}
       </div>
       <div className={styles.replyContainer}>
-        <div className={styles.reply}>
-          <CustomAvatar />
-          <div>
-            Its really hard to find one answer from this I think. The boring
-            answer is, it torally depends on the product. Some business markets
-            work almost the same (e-shops, blogs, content-creation/selling) and
-            some work.
-          </div>
-        </div>
+        {post?.comments?.length > 0 &&
+          post.comments.map((comment) => (
+            <div className={styles.reply} key={comment.id}>
+              <CustomAvatar />
+              <div>{comment.content}</div>
+            </div>
+          ))}
       </div>
       <Modal
         open={openImageUrl}
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div className={styles.imageViewModal}>
@@ -145,19 +166,27 @@ const PostComponent = ({ post }: { post?: any }) => {
             <img
               src="assets/svg/close-icon-black.svg"
               alt=""
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: "pointer" }}
               onClick={() => setOpenImageUrl(null)}
             />
           </div>
           <div className={styles.imageViewBody}>
-            <img
-              src={openImageUrl}
-              className={styles.image}
-              alt=""
-            />
+            <img src={openImageUrl} className={styles.image} alt="" />
           </div>
         </div>
       </Modal>
+
+      {showCommentInput && (
+        <Modal open={true}>
+          <div>
+            <CreatePost
+              isComment={true}
+              postId={post.id}
+              title="Create Comment"
+            />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

@@ -26,6 +26,12 @@ const shopeApis = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    getAllPosts: builder.query({
+      query: () => ({
+        url: `/posts`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -34,4 +40,5 @@ export const {
   useLikePostMutation,
   useUnlikePostMutation,
   useCreatePostMutation,
+  useGetAllPostsQuery,
 } = shopeApis;
