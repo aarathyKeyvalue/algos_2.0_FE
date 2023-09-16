@@ -153,7 +153,12 @@ const PostComponent = ({ post }: { post?: any }) => {
         {post?.comments?.length > 0 &&
           post.comments.map((comment) => (
             <div className={styles.reply} key={comment.id}>
-              <CustomAvatar name="" src={comment?.user[0]?.avatar} />
+              <CustomAvatar
+                name=""
+                src={comment?.user[0]?.avatar}
+                width={24}
+                height={24}
+              />
               <div>{comment.content}</div>
             </div>
           ))}
