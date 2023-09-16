@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.scss";
 import Header from "app/components/header/Header";
 import { useNavigate } from "react-router-dom";
@@ -6,12 +6,26 @@ import CustomAvatar from "app/components/avatar/Avatar";
 import Input from "app/components/input/Input";
 import muiStyles from "app/containers/shop/styles";
 import Button from "@mui/material/Button";
+import { useCreatePostMutation } from "../shop/apiSlice";
 
-const CreatePost = () => {
+const CreatePost = ({
+  isComment = false,
+  postId = "",
+  title = "Create Post",
+}) => {
   const navigate = useNavigate();
   const imageInputRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");
+
+  const [createPostQuery, { isSuccess: createPostSuccess }] =
+    useCreatePostMutation();
+
+  useEffect(() => {
+    if (createPostSuccess) {
+      navigate("/app/community");
+    }
+  }, [createPostSuccess]);
 
   const onBackClick = () => {
     navigate("/app/community");
@@ -29,11 +43,18 @@ const CreatePost = () => {
     }
   };
 
-  const onCreatePost = () => {};
+  const onCreatePost = () => {
+    createPostQuery({
+      content,
+      isPost: !isComment,
+      userId: "e7c9fcd7-561b-4b50-b296-8ae8c3929e9d",
+      ...(isComment && { parentId: postId }),
+    });
+  };
 
   return (
     <div className={styles.createPostWrapper}>
-      <Header hasBack title="Create Post" handleBack={onBackClick} />
+      <Header hasBack title={title} handleBack={onBackClick} />
       <div className={styles.createPostContainer}>
         <CustomAvatar width={42} height={42} />
         <div className={styles.createPostInput}>

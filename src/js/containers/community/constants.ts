@@ -4,7 +4,7 @@ export enum COMMUNITY_TABS_NAMES {
   FAQ = "FAQ",
   TUTORIALS = "Tutorials",
   TIPS = "Tips",
-  RECEIPE = "Receipe",
+  RECEIPE = "Recipe",
 }
 
 export const COMMUNITY_TABS = [
