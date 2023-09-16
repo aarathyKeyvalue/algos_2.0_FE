@@ -7,9 +7,10 @@ import SiteItems from 'app/components/siteItems/SiteItems';
 import Plants from 'app/components/plants/Plants';
 
 import mui from './styles';
-import { MY_PLANTS, MY_SITES, TYPES } from './constants';
+import { ACTIONS, MY_PLANTS, MY_SITES, TYPES } from './constants';
 import styles from './styles.scss';
 import { useGetAllPlantsQuery } from 'app/services/garden';
+import Actions from '../actions/Actions';
 
 const Garden = () => {
   const [selectedTab, setSelectedTab] = useState(MY_SITES);
@@ -45,6 +46,7 @@ const Garden = () => {
       </div>
       {selectedTab === MY_SITES && <SiteItems />}
       {selectedTab === MY_PLANTS && <Plants data={plants} />}
+      {selectedTab === ACTIONS && <Actions />}
     </div>
   );
 };

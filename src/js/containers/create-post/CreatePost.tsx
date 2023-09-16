@@ -61,7 +61,7 @@ const CreatePost = ({
           <Input
             content={content}
             onChange={(e) => setContent(e.target.value)}
-            placeholder="What do you want to share today..."
+            placeholder="Share something"
           />
         </div>
       </div>
