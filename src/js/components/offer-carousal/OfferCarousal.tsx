@@ -1,6 +1,5 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import { products } from "../../containers/shop/data";
 
 const OfferCarousal = (props) => {
   return (
@@ -13,16 +12,15 @@ const OfferCarousal = (props) => {
       centerSlidePercentage={97}
       infiniteLoop
     >
-      {products.map((product) => (
+      {props.offers.map((product) => (
         <div style={{ width: "100%", height: "160px" }}>
           <div
             style={{
               width: "97%",
               height: "100%",
-              backgroundColor: "gray",
               borderRadius: "10px",
             }}
-          ></div>
+          ><img src={product.image} style={{ borderRadius: '10px' }} /></div>
         </div>
       ))}
     </Carousel>

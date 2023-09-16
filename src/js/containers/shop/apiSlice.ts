@@ -32,6 +32,13 @@ const shopeApis = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getProducts: builder.query({
+      query: (categories) => ({
+        url: categories
+          ? `/products?categoryIds=${JSON.stringify(categories)}`
+          : `/products`,
+      }),
+    }),
   }),
 });
 
@@ -41,4 +48,6 @@ export const {
   useUnlikePostMutation,
   useCreatePostMutation,
   useGetAllPostsQuery,
+  useGetProductsQuery,
+  useLazyGetProductsQuery,
 } = shopeApis;

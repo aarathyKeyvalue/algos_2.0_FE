@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./styles.scss";
 import Header from "app/components/header/Header";
 import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
 import ArticleCard from "app/components/article-card/ArticleCard";
-import { products } from "../shop/data";
+import { offers, products } from "../shop/data";
 import ProductCard from "app/components/product-card/ProductCard";
-import { Carousel } from "react-responsive-carousel";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="scroll-wrapper">
       <Header
@@ -39,6 +41,7 @@ const Home = () => {
           }}
         >
           <div
+          onClick={() => navigate('/profile')}
             style={{
               width: 137,
               height: "100%",
@@ -46,6 +49,7 @@ const Home = () => {
               backgroundColor: "#F3F7FF",
               borderRadius: "10px",
               padding: "18px 10px",
+              cursor: 'pointer'
             }}
           >
             <div
@@ -182,7 +186,7 @@ const Home = () => {
           </div>
         </div>
 
-        <OfferCarousal />
+        <OfferCarousal offers={offers} />
         <div
           className={styles.category}
           style={{
@@ -202,9 +206,10 @@ const Home = () => {
           showStatus={false}
           centerMode
           centerSlidePercentage={85}
+          emulateTouch
         >
           {products.map((product) => (
-            <div style={{ width: "95%",  }}>
+            <div style={{ width: "95%", }}>
               <ArticleCard />
             </div>
           ))}

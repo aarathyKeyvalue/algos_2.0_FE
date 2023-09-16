@@ -32,6 +32,17 @@ const categories = [
   },
 ];
 
+const offers = [
+  {
+    image: 'assets/svg/home/banner_1.svg'
+  },
+  {
+    image: 'assets/svg/home/banner_2.svg'
+  },
+  {
+    image: 'assets/svg/home/banner_3.svg'
+  }
+]
 const products = [
   {
     image:
@@ -77,4 +88,15 @@ const products = [
   },
 ];
 
-export { categories, products };
+const shopOffers = [
+  {
+    image: 'assets/svg/shop/banner_1.svg'
+  },
+  {
+    image: 'assets/svg/shop/banner_2.svg'
+  },
+  {
+    image: 'assets/svg/shop/banner_3.svg'
+  }
+]
+export { categories, products, offers, shopOffers };

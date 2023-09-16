@@ -1,0 +1,12 @@
+.quantityContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  margin-left: 5px;
+  .qtyChangeButton {
+    padding: 5px;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

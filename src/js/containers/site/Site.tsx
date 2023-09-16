@@ -144,11 +144,11 @@ const Site = () => {
               </div>
             </>
           </Item>
-          <Item type="humidity" style={styles.temp}>
+          <Item type="water" style={styles.temp}>
             <>
             <div className={styles.details}>
               <div className={styles.eachDetail}>
-                <div className={styles.header}>Temperature</div>
+                <div className={styles.header}>Humidity</div>
               </div>
               <div className={styles.eachDetail}>
                 <div className={`${styles.mainValue} ${styles.phValue}`}>83%</div>

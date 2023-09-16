@@ -2,7 +2,7 @@ export default {
   drawer: {
     width: '480px',
     position: 'absolute',
-    left: 'calc((100% - 450px)/2)'
+    left: 'calc((100% - 480px)/2)'
   }, 
   button: {
     borderRadius: 10,
