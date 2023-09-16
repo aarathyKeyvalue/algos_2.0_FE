@@ -3,11 +3,11 @@ import styles from './styles.scss';
 
 const ArticleCard = () => {
   const article = {
-    imageUrl: 'https://images.unsplash.com/photo-1508184964240-ee96bb9677a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2814&q=80',
+    imageUrl: 'https://media.istockphoto.com/id/658291850/photo/young-plant-growing-in-sunlight.jpg?s=612x612&w=0&k=20&c=ZH9gmP8dLhwNaWuVbtBz99Fkybg_B0Uanw88QXSdMnY=',
     type: 'STORY',
     date: '23 Feb',
-    title: 'How hydroponics saved a village from cancer',
-    description: 'Grow any green leafy VEGETABLES (like Lettuce, Spinach, Basil, Mint, etc) HERBS (like Oregano, Thyme, etc) and SALADS easily.'
+    title: 'Kerala’s biggest hydroponic farm to come up in Thiruvananthapuram',
+    description: 'In a technology-driven farming initiative, Kerala Startup Mission (KSUM)-supported uFarms.io has extended its IoT farm automation system to Uptown Urban Farms Pvt Ltd to set up the state’s first and biggest automated hydroponic farm in the capital city.'
   }
   return (
     <div className={styles.cardWrapper}>
