@@ -15,18 +15,18 @@ const Community = () => {
   const handleTabSelection = (tab) => {
     setSelectedTab(tab);
   };
-  useEffect(() => {
-    const chatBotElement = document.getElementById('chat-bot');
-    if (chatBotElement) {
-      chatBotElement.style.display = 'none';
-    }
-    return ()=>{
-      if (chatBotElement) {
-        chatBotElement.style.display = 'block';
-      }
-    }
-  }, []); 
 
+  useEffect(() => {
+    const chatBotElement = document.getElementById("chat-bot");
+    if (chatBotElement) {
+      chatBotElement.style.display = "none";
+    }
+    return () => {
+      if (chatBotElement) {
+        chatBotElement.style.display = "block";
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.communityContainer}>
