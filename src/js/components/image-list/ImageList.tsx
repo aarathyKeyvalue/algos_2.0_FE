@@ -9,16 +9,16 @@ const CustomImageList = ({
 }) => {
   return (
     <div className={styles.imageListContainer}>
-      <ImageList cols={4} rowHeight={85}>
+      <ImageList cols={3} rowHeight={200}>
         {imageList.map((image: any) => (
-          <div key={image} style={{ width: "85px" }}>
+          <div key={image} style={{ width: "200px" }}>
             <img
               src={`${image}`}
               alt={image.title}
               className={styles.image}
               onClick={() => onImageClick(image)}
-              width={85}
-              height={85}
+              width={200}
+              height={200}
             />
           </div>
         ))}

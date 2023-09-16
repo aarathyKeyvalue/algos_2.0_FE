@@ -30,7 +30,9 @@ const PostComponent = ({ post }: { post?: any }) => {
       if (postElem.offsetHeight > 54) {
         setShowReadMore(true);
       } else {
-        const postParentElem = document.getElementById("text-wrapper");
+        const postParentElem = document.getElementById(
+          `${post.id}-text-wrapper`
+        );
         if (postParentElem) {
           postParentElem.style.height = "fit-content";
         }
@@ -77,7 +79,7 @@ const PostComponent = ({ post }: { post?: any }) => {
   };
 
   const toggleReadMore = () => {
-    const postParentElem = document.getElementById("text-wrapper");
+    const postParentElem = document.getElementById(`${post.id}-text-wrapper`);
     if (postParentElem) {
       if (isTextExpanded) {
         postParentElem.style.height = "50px";
@@ -90,16 +92,17 @@ const PostComponent = ({ post }: { post?: any }) => {
   };
 
   return (
-    <div className={styles.postContainer}>
+    <div className={styles.postContainer} key={post.id}>
       <div className={styles.avatar}>
         <CustomAvatar
-          src={post?.author?.src}
-          name={post?.author?.name}
-          description={post?.author?.place}
+          // src={post?.user?.avatar}
+          name={post?.user?.name}
+          description={post?.user?.email}
+          showName={true}
         />
       </div>
       <div className={styles.textContainer}>
-        <div className={styles.textWrapper} id="text-wrapper">
+        <div className={styles.textWrapper} id={`${post.id}-text-wrapper`}>
           <div className={styles.text} ref={postContent}>
             {post.content}
           </div>
@@ -133,22 +136,24 @@ const PostComponent = ({ post }: { post?: any }) => {
             </div>
           ))}
         </div>
-        <div className={styles.separator}>
-          <img src={"assets/svg/community/dotSeparator"} alt="" />
-        </div>
         {post?.comments?.length > 0 && (
-          <div className={styles.repliesText}>
-            {`${post.comments.length} Repl${
-              post.comments.length === 1 ? "y" : "ies"
-            }`}
-          </div>
+          <>
+            <div className={styles.separator}>
+              <img src={"assets/svg/community/dotSeparator"} alt="" />
+            </div>
+            <div className={styles.repliesText}>
+              {`${post.comments.length} Repl${
+                post.comments.length === 1 ? "y" : "ies"
+              }`}
+            </div>
+          </>
         )}
       </div>
       <div className={styles.replyContainer}>
         {post?.comments?.length > 0 &&
           post.comments.map((comment) => (
             <div className={styles.reply} key={comment.id}>
-              <CustomAvatar />
+              <CustomAvatar name="" />
               <div>{comment.content}</div>
             </div>
           ))}
