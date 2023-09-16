@@ -1,0 +1,45 @@
+@keyframes show {
+  0%, 100% {
+    box-shadow: none;
+  }
+  70% {
+    box-shadow: 0px 4px 30px 0px #ff000040
+  }
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 16px;
+  margin-top: 40px;
+  .each {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 18px;
+    border-radius: 15px;
+    justify-content: space-between;
+    font-weight: 600;
+    .infoVal {
+      width: 70%;
+    }
+    .image img{
+      width: 56px;
+      height: 56px;
+    }
+    &.info {
+      background-color: #2d830410;
+      color: #2d8304;
+    }
+    &.error {
+      background-color: #ff000010;
+      color: #ff0000;
+      animation: show 2s linear;
+      animation-iteration-count: infinite;
+    }
+    &.warning {
+      background-color: #EEAD0510;
+      color: #EEAD05;
+    }
+  }
+}
