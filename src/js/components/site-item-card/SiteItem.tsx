@@ -12,8 +12,7 @@ const SiteItem = (props) => {
     plants = [],
     temperature,
     waterLevel,
-    humidity,
-    capacity
+    humidity
   } = details;
   return (
     <div className={styles.siteItemContainer}>
@@ -34,7 +33,7 @@ const SiteItem = (props) => {
                 <div className={styles.detailsHeader}>Plants</div>
                 <div className={styles.detailsValue}>
                   {plants.length}
-                  <span className={styles.capacity}>/{capacity}</span>
+                  <span className={styles.capacity}>/10</span>
                 </div>
               </div>
               <div className={styles.tiltedImage}>

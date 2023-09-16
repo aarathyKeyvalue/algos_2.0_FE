@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Header from "app/components/header/Header";
@@ -10,13 +10,23 @@ import AntSwitch from "app/components/switch/Switch";
 import mui from './styles';
 import { CROP_TYPES, crops } from "./constants";
 import styles from './styles.scss';
+import { useGetGardenSiteByIdQuery } from "app/services/garden";
 
 const Site = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const getCropType = (crop) => CROP_TYPES.find((each) => each.type === crop.type);
+
+  const { data = {}, isLoading } = useGetGardenSiteByIdQuery(id);
+  const getCropType = (crop) => CROP_TYPES.find((each) => each.type === crop.name);
   const [showAllCrops, toggleShowAll] = useState<boolean>(false);
   const goToPlants = () => navigate(`/site/${id}/plants`);
+  if (isLoading) {
+    return <div
+    className="loader"
+    >
+      <CircularProgress />
+      </div>
+  }
   return (
     <div className={styles.siteContainer}>
       <Header
@@ -25,7 +35,7 @@ const Site = () => {
       hasVoiceCommand
       title={
       <div className={styles.header}>
-        <div className={styles.headerTitle}>Living Room</div>
+        <div className={styles.headerTitle}>{data.name}</div>
         <div className={styles.headerSub}>Tashin Pro</div>
       </div>
       } />
@@ -33,13 +43,13 @@ const Site = () => {
         <Item type="plants" style={styles.plants}>
           <>
             <div className={styles.plantsHeader} onClick={goToPlants}>
-              <span><span className={styles.count}>7</span>
+              <span><span className={styles.count}>{data.plants?.length}</span>
               <span className={styles.capacity}>/10</span></span>
               <span className={styles.sub}> Plants</span>
               <img src="assets/svg/app/right-arrow.svg" />
             </div>
             <div className={styles.crops}>
-              {crops?.map((crop, index) => {
+              {data?.plants?.map((crop, index) => {
                 const cropType = getCropType(crop);
                 return ((crops.length > 5 && index < 4) || (crops.length <= 5) || showAllCrops) && cropType && (
                 <div className={styles.eachCrop}>
@@ -47,7 +57,7 @@ const Site = () => {
                   <div className={styles.cropName}>{cropType.name}</div>
                 </div>)
               })}
-              {crops.length > 5 && (
+              {data?.plants?.length > 5 && (
                 <div className={styles.moreCrops} onClick={() => toggleShowAll(!showAllCrops)}>
                   {showAllCrops && 'Show Less' || `+${crops?.length - 4} more`}
                 </div>
@@ -63,7 +73,7 @@ const Site = () => {
                 <AntSwitch defaultChecked/>
               </div>
               <div className={styles.eachDetail}>
-                <div className={`${styles.mainValue} ${styles.waterLevel}`}>20 Ltrs.</div>
+                <div className={`${styles.mainValue} ${styles.waterLevel}`}>{data?.waterLevel} Ltrs.</div>
                 <Button sx={[muiStyles.secondary, mui.button]}>Schedule</Button>
               </div>
               <div className={styles.infos}>
@@ -87,7 +97,7 @@ const Site = () => {
                 <AntSwitch defaultChecked/>
               </div>
               <div className={styles.eachDetail}>
-                <div className={`${styles.mainValue} ${styles.lightValue}`}>27 lm.</div>
+                <div className={`${styles.mainValue} ${styles.lightValue}`}>{data?.lightLevel} lm.</div>
               </div>
               <div className={styles.infos}>
                 <div className={styles.info}>
@@ -108,13 +118,13 @@ const Site = () => {
                 <div className={styles.header}>Temperature</div>
               </div>
               <div className={styles.eachDetail}>
-                <div className={`${styles.mainValue} ${styles.temperature}`}>27&deg;C</div>
+                <div className={`${styles.mainValue} ${styles.temperature}`}>{data.temperature}&deg;C</div>
               </div>
               <div className={styles.infos}>
                 <div className={styles.info}>
                   Ideal for current plants
                 </div>
-                <div className={styles.max}>Ideal Range: 26-30</div>
+                <div className={styles.max}>Ideal Range: 25-30</div>
               </div>
             </div>
             <div className={styles.image}>
@@ -130,7 +140,7 @@ const Site = () => {
                 <div className={styles.header}>pH Level</div> 
               </div>
               <div className={styles.eachDetail}>
-                <div className={`${styles.mainValue} ${styles.lightValue}`}>5.2</div>
+                <div className={`${styles.mainValue} ${styles.lightValue}`}>{data.phLevel}</div>
               </div>
               <div className={styles.infos}>
                 <div className={styles.info}>
@@ -151,7 +161,7 @@ const Site = () => {
                 <div className={styles.header}>Humidity</div>
               </div>
               <div className={styles.eachDetail}>
-                <div className={`${styles.mainValue} ${styles.phValue}`}>83%</div>
+                <div className={`${styles.mainValue} ${styles.phValue}`}>{data.humidity}%</div>
               </div>
               <div className={styles.infos}>
                 <div className={styles.phInfo}>
@@ -173,7 +183,7 @@ const Site = () => {
                 <AntSwitch defaultChecked/>
               </div>
               <div className={styles.eachDetail}>
-                <div className={`${styles.mainValue} ${styles.phValue}`}>1ml/hr</div>
+                <div className={`${styles.mainValue} ${styles.phValue}`}>{data.nutrientLevel}</div>
                 <Button sx={[muiStyles.secondary, mui.button]}>Schedule</Button>
               </div>
               <div className={styles.infos}>
@@ -182,7 +192,7 @@ const Site = () => {
             </div>
             <div className={styles.image}>
                 <img src="assets/svg/garden/nutrients.svg" />
-              </div>
+            </div>
           </>
         </Item>
       </div>

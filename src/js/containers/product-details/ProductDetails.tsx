@@ -2,7 +2,7 @@ import React from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import styles from './styles.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from 'app/components/header/Header';
 
 import Box from '@mui/material/Box';
@@ -10,19 +10,22 @@ import Typography from '@mui/material/Typography';
 
 import BasicRating from 'app/components/BasicRating/BasicRating';
 import PriceView from 'app/components/PriceView/PriceView';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
+import { useAddToCartMutation, useGetProductByIdQuery } from 'app/services/home';
 
 const ProductDetails = () => {
   const navigate = useNavigate();
-  const product = {
-    name: 'TASHI',
-    manufacture: 'The Tashi Junior',
-    starRating: 3,
-    totalReviews: '20',
-    currentPrice: '599.00',
-    actualPrice: '799.00'
-  }
+  const { id } = useParams();
+  const [trigger] = useAddToCartMutation();
+  const { data: product, isLoading } = useGetProductByIdQuery(id);
 
+  if (isLoading) {
+    return <div
+    className="loader"
+    >
+      <CircularProgress />
+      </div>
+  }
   return (
     <>
       <Header
@@ -83,16 +86,16 @@ const ProductDetails = () => {
               {product?.manufacture}
             </Typography>
             <BasicRating
-              starCount={product?.starRating}
-              totalReviewCount={product?.totalReviews}
+              starCount={product?.starRating || 4}
+              totalReviewCount={product?.totalReviews || 40}
               isReadOnly
               showRatingCountFullText
             />
             <PriceView
               currentPriceCustomClass={styles.currentPrice}
               actualPriceCustomClass={styles.actualPrice}
-              actualPrice={product?.actualPrice}
-              currentPrice={product?.currentPrice}
+              actualPrice={product?.price}
+              currentPrice={product?.price * 0.9}
             />
           </Box>
         </div>
@@ -124,6 +127,7 @@ const ProductDetails = () => {
           variant="contained"
           disableElevation
           className={`${styles.button} ${styles.secondaryButton}`}
+          onClick={() => trigger({userId: '6aa8aad1-e496-4ee8-a93f-0b35a8ee093f', productId: id})}
         >
           Add to cart
         </Button>

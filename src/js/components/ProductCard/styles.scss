@@ -10,3 +10,14 @@
     }
   }
 }
+
+.container {
+  &:global(.MuiPaper-root) {
+    position: relative !important;
+    left: 0 !important
+  }
+  &:global(.MuiBackdrop-root) {
+    position: relative !important;
+    left: 0 !important
+  }
+}

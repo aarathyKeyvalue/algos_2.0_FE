@@ -44,7 +44,7 @@ const Header = (props) => {
             <img src="assets/svg/header/search.svg" />
           </div>}
           {hasCart && (
-            <div className={styles.headerCart}>
+            <div className={styles.headerCart} onClick={() => navigate('/app/cart')}>
               <img src="assets/svg/header/cart.svg" />
             </div>
           )}

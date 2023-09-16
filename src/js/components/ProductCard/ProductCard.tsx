@@ -37,7 +37,8 @@ const ProductCard: FC<ProductCardType> = (props) => {
         padding: "16px 0px",
         borderBottom: "1px solid #EFEFEF",
       }}
-      onClick={() => navigate("/product-details")}
+      className={styles.container}
+      onClick={() => navigate(`/product-details/${product.id}`)}
     >
       <CardActionArea sx={{ height: "100%" }}>
         <CardContent
@@ -52,7 +53,7 @@ const ProductCard: FC<ProductCardType> = (props) => {
             component="img"
             height="100px"
             width="100px"
-            image="assets/svg/products/tashiPro.svg"
+            image={product.image}
             alt="Paella dish"
             sx={{ maxWidth: "100px", maxHeight: "100px", borderRadius: "8px" }}
           />
