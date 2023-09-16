@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import styles from './styles.scss';
 import Header from 'app/components/header/Header';
 import { Button } from '@mui/material';
 import ProductCard from 'app/components/ProductCard/ProductCard';
 import { formatCartItems } from './utils';
+import { useGetCartQuery, useRemoveAllFromCartMutation } from 'app/services/home';
 
 const buttonStyles = {
   button: {
@@ -42,54 +43,36 @@ const buttonStyles = {
 const CartLayout = () => {
   const [selectedTab, setSelectedTab] = useState("equipments");
 
-  const cartItemsApiResponse = [{
-    "id": "2d5f602f-52fa-4df5-b7d8-43d0e2088c70",
-    "name": "Product 1",
-    "description": "Description 1",
-    "image": "image1.jpg",
-    "price": 20,
-    "categoryId": "35f503d0-4311-4d12-8c61-82a0f20568e5",
-    "type": "marketplace-product",
-    "createdAt": "2023-09-15T06:41:26.002Z",
-    "updatedAt": "2023-09-15T06:41:26.002Z",
-    "deletedAt": null,
-    "category": {
-      "id": "35f503d0-4311-4d12-8c61-82a0f20568e5",
-      "name": "Kits",
-      "description": "Description 1",
-      "createdAt": "2023-09-15T06:52:14.021Z",
-      "updatedAt": "2023-09-15T06:52:14.021Z",
-      "deletedAt": null
-    }
-  },
-  {
-    "id": "2d5f602f-52fa-4df5-b7d8-43d0e2088c71",
-    "name": "Product 2",
-    "description": "Description 2",
-    "image": "image2.jpg",
-    "price": 20,
-    "categoryId": "35f503d0-4311-4d12-8c61-82a0f20568e5",
-    "type": "marketplace-product",
-    "createdAt": "2023-09-15T06:41:26.002Z",
-    "updatedAt": "2023-09-15T06:41:26.002Z",
-    "deletedAt": null,
-    "category": {
-      "id": "35f503d0-4311-4d12-8c61-82a0f20568e5",
-      "name": "Kits",
-      "description": "Description 1",
-      "createdAt": "2023-09-15T06:52:14.021Z",
-      "updatedAt": "2023-09-15T06:52:14.021Z",
-      "deletedAt": null
-    }
-  }];
+  const { data } = useGetCartQuery('');
+  const [showSuccess, setSuccess] = useState<boolean>(false);
+  const [trigger, { isSuccess }] = useRemoveAllFromCartMutation();
 
-  const [cartItems, setCartItems] = useState(formatCartItems(cartItemsApiResponse));
+  const [cartItems, setCartItems] = useState(formatCartItems([]));
   const totalPrice = useMemo(() => (
-    cartItems?.reduce((a, b) => a + Math.abs(b.price * b.quantity), 0)
+    cartItems?.reduce((a, b) => a + Math.abs(b.product.price * b.quantity), 0)
   ), [cartItems]);
-
+  useEffect(() => {
+    const chatBotElement = document.getElementById('chat-bot');
+    if (chatBotElement) {
+      chatBotElement.style.display = 'none';
+    }
+    return ()=>{
+      if (chatBotElement) {
+        chatBotElement.style.display = 'block';
+      }
+    }
+  }, []); 
+  useEffect(() => {
+    if (isSuccess) {
+      setSuccess(isSuccess);
+      setTimeout(() => setSuccess(false), 3000)
+    }
+  }, [isSuccess]);
+  useEffect(() => {
+    if (data?.cartItems) setCartItems(data?.cartItems)
+}, [data])
   const totalDiscountPrice = useMemo(() => (
-    cartItems?.reduce((a, b) => a + Math.abs(b.price * b.quantity * .9), 0)
+    cartItems?.reduce((a, b) => a + Math.abs(b.product.price * b.quantity * .9), 0)
   ), [cartItems]);
 
   const onUpdateQty = (updatedItem, isIncrement) => {
@@ -118,7 +101,7 @@ const CartLayout = () => {
       <Header
         hasSearch
         hasMenu
-        title="Cart(3)"
+        title={`Cart${data ? `(${data.length})` : ''}`}
         titleCenter
       />
       <div className={styles.cartLayoutBody}>
@@ -134,7 +117,7 @@ const CartLayout = () => {
             ]}
             onClick={() => setSelectedTab("equipments")}
           >
-            Equipments(2)
+            Equipments
           </Button>
           <Button
             variant="contained"
@@ -147,11 +130,11 @@ const CartLayout = () => {
             ]}
             onClick={() => setSelectedTab("green-market")}
           >
-            GreenMarket(1)
+            GreenMarket
           </Button>
         </div>
 
-        <div className={styles.addressContainer}>
+        {data?.cartItems?.length > 0 && <div className={styles.addressContainer}>
           <div className={styles.boldText}>Deliver to</div>
           <div className={styles.addressValueContainer}>
             <div className={styles.left}>
@@ -172,21 +155,22 @@ const CartLayout = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </div>}
 
         <div className={styles.cartItemsList}>
-          {cartItems?.length > 0 && cartItems?.map((cartItem) => (
+          {data?.cartItems?.length > 0 && data?.cartItems?.map((cartItem) => (
             <div className={styles.cartItemContainer}>
               <ProductCard
                 product={{
                   id: cartItem?.id,
                   manufacture: 'TASHI',
-                  name: cartItem?.name,
+                  name: cartItem?.product?.name,
                   starRating: 4,
                   totalReviews: 28,
-                  actualPrice: cartItem?.price,
-                  currentPrice: Math.abs((cartItem?.price) * .9),
-                  quantity: cartItem?.quantity
+                  actualPrice: cartItem?.product?.price,
+                  currentPrice: Math.abs((cartItem?.product?.price) * .9),
+                  quantity: cartItem?.quantity,
+                  image: cartItem?.product?.image
                 }}
                 showQuantity
                 showSaveForLater
@@ -197,7 +181,9 @@ const CartLayout = () => {
           ))}
         </div>
 
-        <div className={styles.priceBreakDownContainer}>
+        {(data?.cartItems?.length > 0 && (
+          <>
+          <div className={styles.priceBreakDownContainer}>
           <div className={styles.boldText}>
             Price breakdown
           </div>
@@ -251,9 +237,15 @@ const CartLayout = () => {
                 color: '#ffffff',
               }
             }}
+            onClick={() => trigger('6aa8aad1-e496-4ee8-a93f-0b35a8ee093f')}
           >Place order</Button>
-        </div>
+        </div></>
+        )) || (
+          <div className={styles.emptyCart}>Your Cart is Empty</div>
+        )}
       </div>
+      {showSuccess && <div className={styles.success}>
+        Order placed</div>}
     </div>
   )
 }

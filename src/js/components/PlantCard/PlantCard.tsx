@@ -4,8 +4,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardMedia } from '@mui/material';
+import { CROP_TYPES } from 'app/containers/site/constants';
 
-const PlantCard = () => {
+const PlantCard = (props) => {
+  const { details } = props;
+  
+  const getCropType = (crop) => CROP_TYPES.find((each) => each.type === crop.name);
   return (
     <Card
       sx={{ width: '100%', paddingBottom: '0px', boxShadow: 'none',minHeight:"111px" }}
@@ -25,7 +29,7 @@ const PlantCard = () => {
             component="img"
             height="57px"
             width="62px"
-            image="assets/svg/plants/cabbage.svg"
+            image={getCropType(details)?.image || CROP_TYPES[1]?.image}
             alt="Paella dish"
             sx={{ maxWidth: '62px', maxHeight: '57px', borderRadius: '8px' }}
           />
@@ -51,14 +55,14 @@ const PlantCard = () => {
                 }}
               >
                 <Typography sx={{ fontSize: 10 }} color="#1D1D1D80">
-                  GREEN LEAFY
+                  {details?.gardenSite?.name}
                 </Typography>
                 <Typography
                   sx={{ fontSize: 15, fontWeight: '600' }}
                   color="#1D1D1D"
                   fontWeight={500}
                 >
-                  Chinese Cabbage
+                  {details?.name}
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -73,7 +77,7 @@ const PlantCard = () => {
                     HARVEST IN
                   </Typography>
                   <Typography sx={{ fontSize: 12 }} color="#2D8304">
-                    3-4 weeks
+                    {details?.daysToHarvest} Days
                   </Typography>
                 </Box>
                 <Box
@@ -87,7 +91,7 @@ const PlantCard = () => {
                     pH Level
                   </Typography>
                   <Typography sx={{ fontSize: 12 }} color="#2D8304">
-                    5.6
+                    {details?.gardenSite?.phLevel}
                   </Typography>
                 </Box>
                 <Box
@@ -100,7 +104,7 @@ const PlantCard = () => {
                     NUTRITION
                   </Typography>
                   <Typography sx={{ fontSize: 12 }} color="#EEAD05">
-                    Okay
+                    {details?.gardenSite?.nutrientLevel}
                   </Typography>
                 </Box>
               </Box>

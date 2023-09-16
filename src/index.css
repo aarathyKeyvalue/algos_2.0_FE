@@ -32,6 +32,13 @@ body {
 .MuiPaper-root {
   animation: animation 0.2s linear 0s 1 forwards;
 }
+.loader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 * {
   box-sizing: border-box;
 }

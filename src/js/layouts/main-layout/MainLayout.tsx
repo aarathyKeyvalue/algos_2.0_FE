@@ -42,7 +42,7 @@ const MainLayout: FC<object> = () => {
           </Route>
           <Route path="/site/:id" element={<Site />} />
           <Route path="/site/:id/plants" element={<Plants />} />
-          <Route path="/product-details" element={<ProductDetails />} />
+          <Route path="/product-details/:id" element={<ProductDetails />} />
           <Route path="/view-in-room" element={<ViewInRoom />} />
           <Route path="/create-post" element={<CreatePost />} />
         </Routes>

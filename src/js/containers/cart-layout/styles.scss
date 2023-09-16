@@ -1,5 +1,6 @@
 .cartLayoutBody {
   padding-top: 24px;
+  height: calc(100% - 250px);
   .mainTab {
     display: flex;
     align-items: center;
@@ -84,6 +85,14 @@
     }
   }
 
+  .emptyCart {
+    color: #00000070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
   .checkoutFooter {
     position: absolute;
     bottom: 90px;
@@ -112,5 +121,21 @@
         line-height: 20px; /* 90.909% */
       }
     }
+  }
+}
+
+.cartLayoutWrapper {
+  height: 100%;
+  .success {
+    position: absolute;
+    bottom: 150px;
+    right: 20px;
+    color: #2D8304;
+    background-color: #2D830440;
+    padding:  6px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

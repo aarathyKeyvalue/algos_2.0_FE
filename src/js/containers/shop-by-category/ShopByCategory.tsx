@@ -39,8 +39,6 @@ const Shop = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  console.log(productsData);
-
   return (
     <div className="scroll-wrapper">
       <Loader isLoading={isLoading || isProductsLoading} />
@@ -80,6 +78,8 @@ const Shop = () => {
                 totalReviews: randomIntFromInterval(10, 90),
                 currentPrice: product.price * 0.9,
                 actualPrice: product.price,
+                id: product.id,
+                image: product.image
               }}
             />
           ))}

@@ -8,9 +8,19 @@ import OfferCarousal from "app/components/offer-carousal/OfferCarousal";
 import ArticleCard from "app/components/article-card/ArticleCard";
 import { offers, products } from "../shop/data";
 import ProductCard from "app/components/product-card/ProductCard";
+import { useGetGardenCountQuery } from "app/services/home";
+import { CircularProgress } from "@mui/material";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { data, isLoading } = useGetGardenCountQuery('');
+  if (isLoading) {
+    return <div
+    className="loader"
+    >
+      <CircularProgress />
+      </div>
+  }
   return (
     <div className="scroll-wrapper">
       <Header
@@ -108,7 +118,7 @@ const Home = () => {
                 <div>
                   <div style={{ fontSize: 12 }}>Sites</div>
                   <div style={{ fontSize: 20, fontWeight: 600, marginTop: 4 }}>
-                    3
+                    {data?.gardenCount}
                   </div>
                 </div>
                 <img
@@ -133,7 +143,7 @@ const Home = () => {
                 <div>
                   <div style={{ fontSize: 12 }}>Plants</div>
                   <div style={{ fontSize: 20, fontWeight: 600, marginTop: 4 }}>
-                    24
+                    {data?.plantCount}
                   </div>
                 </div>
                 <img

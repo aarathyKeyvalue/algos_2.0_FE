@@ -1,22 +1,22 @@
 const CROP_TYPES = [{
   id: '01',
-  type: 'cabbage',
+  type: 'Lettuce',
   name: 'Chinese Cabbage',
   image: 'assets/svg/plants/cabbage.svg',
   tilted: true
 }, {
   id: '02',
-  type: 'bell_pepper',
+  type: 'Strawberries',
   name: 'Bell Peppers',
   image: 'assets/svg/plants/bell_pepper.svg'
 }, {
   id: '03',
-  type: 'aloe_vera',
+  type: 'Kale',
   name: 'Aloe Vera',
   image: 'assets/svg/plants/aloe_vera.svg'
 }, {
   id: '04',
-  type: 'spinach',
+  type: 'Spinach',
   name: 'Spinach',
   image: 'assets/svg/plants/spinach.svg'
 }, {
