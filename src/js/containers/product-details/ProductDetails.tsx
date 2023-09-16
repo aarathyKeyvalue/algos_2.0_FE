@@ -21,10 +21,10 @@ const ProductDetails = () => {
 
   if (isLoading) {
     return <div
-    className="loader"
+      className="loader"
     >
       <CircularProgress />
-      </div>
+    </div>
   }
   return (
     <>
@@ -44,7 +44,7 @@ const ProductDetails = () => {
             <div className={styles.productImageCard}>
               <img
                 className={styles.productImage}
-                src="assets/svg/product-image-1.svg"
+                src={product?.image ? product?.image : "assets/svg/product-image-1.svg"}
               />
               <div className={styles.viewProductButtonContainer}>
                 <div
@@ -61,13 +61,13 @@ const ProductDetails = () => {
             <div className={styles.productImageCard}>
               <img
                 className={styles.productImage}
-                src="assets/svg/product-image-1.svg"
+                src={product?.image ? product?.image : "assets/svg/product-image-1.svg"}
               />
             </div>
             <div className={styles.productImageCard}>
               <img
                 className={styles.productImage}
-                src="assets/svg/product-image-1.svg"
+                src={product?.image ? product?.image : "assets/svg/product-image-1.svg"}
               />
             </div>
           </Carousel>
@@ -127,7 +127,7 @@ const ProductDetails = () => {
           variant="contained"
           disableElevation
           className={`${styles.button} ${styles.secondaryButton}`}
-          onClick={() => trigger({userId: '6aa8aad1-e496-4ee8-a93f-0b35a8ee093f', productId: id})}
+          onClick={() => trigger({ userId: '6aa8aad1-e496-4ee8-a93f-0b35a8ee093f', productId: id })}
         >
           Add to cart
         </Button>
