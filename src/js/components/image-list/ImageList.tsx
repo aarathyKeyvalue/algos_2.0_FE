@@ -11,9 +11,9 @@ const CustomImageList = ({
     <div className={styles.imageListContainer}>
       <ImageList cols={4} rowHeight={85}>
         {imageList.map((image: any) => (
-          <div key={image.src} style={{ width: "85px" }}>
+          <div key={image} style={{ width: "85px" }}>
             <img
-              src={`${image.src}`}
+              src={`${image}`}
               alt={image.title}
               className={styles.image}
               onClick={() => onImageClick(image)}
