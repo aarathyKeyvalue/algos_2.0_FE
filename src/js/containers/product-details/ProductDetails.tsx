@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import styles from './styles.scss';
@@ -16,15 +16,24 @@ import { useAddToCartMutation, useGetProductByIdQuery } from 'app/services/home'
 const ProductDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [trigger] = useAddToCartMutation();
+  const [buyNowClicked, setBuyNow] = useState(false);
+  const [trigger, { isSuccess}] = useAddToCartMutation();
   const { data: product, isLoading } = useGetProductByIdQuery(id);
 
+  const buyNow = () => {
+    setBuyNow(true);
+    trigger({userId: '6aa8aad1-e496-4ee8-a93f-0b35a8ee093f', productId: id})
+  }
+
+  useEffect(() => {
+    if (isSuccess && buyNowClicked) navigate('/app/cart');
+  }, [isSuccess]);
   if (isLoading) {
     return <div
-    className="loader"
+      className="loader"
     >
       <CircularProgress />
-      </div>
+    </div>
   }
   return (
     <>
@@ -44,7 +53,7 @@ const ProductDetails = () => {
             <div className={styles.productImageCard}>
               <img
                 className={styles.productImage}
-                src="assets/svg/product-image-1.svg"
+                src={product?.image ? product?.image : "assets/svg/product-image-1.svg"}
               />
               <div className={styles.viewProductButtonContainer}>
                 <div
@@ -61,13 +70,13 @@ const ProductDetails = () => {
             <div className={styles.productImageCard}>
               <img
                 className={styles.productImage}
-                src="assets/svg/product-image-1.svg"
+                src={product?.image ? product?.image : "assets/svg/product-image-1.svg"}
               />
             </div>
             <div className={styles.productImageCard}>
               <img
                 className={styles.productImage}
-                src="assets/svg/product-image-1.svg"
+                src={product?.image ? product?.image : "assets/svg/product-image-1.svg"}
               />
             </div>
           </Carousel>
@@ -120,6 +129,7 @@ const ProductDetails = () => {
           variant="contained"
           disableElevation
           className={`${styles.button} ${styles.primaryButton}`}
+          onClick={buyNow}
         >
           Buy now
         </Button>
@@ -127,7 +137,7 @@ const ProductDetails = () => {
           variant="contained"
           disableElevation
           className={`${styles.button} ${styles.secondaryButton}`}
-          onClick={() => trigger({userId: '6aa8aad1-e496-4ee8-a93f-0b35a8ee093f', productId: id})}
+          onClick={() => trigger({ userId: '6aa8aad1-e496-4ee8-a93f-0b35a8ee093f', productId: id })}
         >
           Add to cart
         </Button>
